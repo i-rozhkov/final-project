@@ -4,9 +4,11 @@
   "description": "epam final assignment",
   "main": "index.js",
   "scripts": {
+    "start": "npm run server && npm run build",
     "server": "node ./server/server.js",
     "server:dev": "nodemon ./server/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack",
+    "build:dev": "webpack -w --watch-aggregate-timeout 100ms"
   },
   "author": "Ivan Rozhkov <gather.all@bk.ru>",
   "license": "ISC",
@@ -23,8 +25,50 @@
     "react-dom": "^16.2.0"
   },
   "devDependencies": {
+    "babel-eslint": "^8.0.3",
+    "eslint": "^4.12.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-react": "^7.5.1",
     "html-webpack-plugin": "^2.30.1",
     "nodemon": "^1.12.1",
     "webpack": "^3.9.1"
+  },
+  "babel": {
+    "presets": [
+      "env",
+      "react"
+    ]
+  },
+  "eslintConfig": {
+    "parser": "babel-eslint",
+    "plugins": [
+      "react"
+    ],
+    "extends": [
+      "airbnb-base"
+    ],
+    "env": {
+      "browser": true,
+      "node": true
+    },
+    "globals": {
+      "document": false
+    },
+    "rules": {
+      "linebreak-style": ["error", "windows"],
+      "max-len": [
+        1,
+        70,
+        2,
+        {
+          "ignoreComments": true
+        }
+      ],
+      "react/prop-types": [
+        2
+      ]
+    }
   }
 }
