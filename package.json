@@ -8,7 +8,8 @@
     "server": "node ./server/server.js",
     "server:dev": "nodemon ./server/server.js",
     "build": "rimraf dist && webpack",
-    "build:dev": "rimraf dist && webpack -w --watch-aggregate-timeout 100ms"
+    "build:dev": "rimraf dist && webpack -w --watch-aggregate-timeout 100ms",
+    "wds": "webpack-dev-server"
   },
   "author": "Ivan Rozhkov <gather.all@bk.ru>",
   "license": "ISC",
@@ -35,7 +36,8 @@
     "html-webpack-plugin": "^2.30.1",
     "nodemon": "^1.12.1",
     "rimraf": "^2.6.2",
-    "webpack": "^3.9.1"
+    "webpack": "^3.9.1",
+    "webpack-dev-server": "^2.9.7"
   },
   "babel": {
     "presets": [
