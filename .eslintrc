@@ -1,0 +1,38 @@
+{
+	"extends": ["airbnb-base"],
+	"parser": "babel-eslint",
+	"plugins": ["react"],
+	"env": {
+		"browser": true,
+		"node": true
+	},
+	"globals": {
+		"document": false
+	},
+	"rules": {
+		"linebreak-style": ["error", "windows"],
+		"indent": [2, "tab"],
+		"max-len": [1, 70, 2,
+			{
+				"ignoreComments": true
+			}],
+		"no-tabs": 0,
+		"react/prop-types": [2],
+		"class-methods-use-this": [2,
+			{
+				"exceptMethods": [
+					"componentDidMount",
+					"componentDidUpdate",
+					"componentWillMount",
+					"componentWillReceiveProps",
+					"componentWillUnmount",
+					"componentWillUpdate",
+					"render",
+					"shouldComponentUpdate"
+				]
+			}
+		],
+		"react/jsx-uses-react": "error",
+		"react/jsx-uses-vars": "error"
+	}
+}

@@ -3,38 +3,46 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './src/app.js',
-  output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist')
-  },
+	entry: './src/app.js',
+	output: {
+		filename: 'bundle.js',
+		path: path.resolve(__dirname, 'dist'),
+	},
 
-  plugins: [
-    new webpack.NoEmitOnErrorsPlugin(),
-    new HtmlWebpackPlugin({
-      template: './src/index.html',
-      inject: 'body'
-    })
-  ],
+	plugins: [
+		new webpack.NoEmitOnErrorsPlugin(),
+		new HtmlWebpackPlugin({
+			template: './src/index.html',
+			inject: 'body',
+		}),
+	],
 
-  resolve: {
-    modules: ['node_modules'],
-    extensions: ['*', '.js']
-  },
+	resolve: {
+		modules: ['node_modules'],
+		extensions: ['*', '.js'],
+	},
 
-  resolveLoader: {
-    modules: ['node_modules'],
-    moduleExtensions: ['*-loader', '*'],
-    extensions: ['*', '.js']
-  },
+	resolveLoader: {
+		modules: ['node_modules'],
+		moduleExtensions: ['*-loader', '*'],
+		extensions: ['*', '.js'],
+	},
 
-  module: {
-    rules: [{
-      test: /\.(js|jsx)$/,
-      exclude: /node_modules/,
-      use: ['babel-loader',
-            'eslint-loader'
-      ]
-    }]
-  }
+	module: {
+		rules: [{
+			test: /\.(js|jsx)$/,
+			exclude: /node_modules/,
+			use: ['babel-loader',
+				'eslint-loader',
+			],
+		},
+		{
+			test: /\.css$/,
+			exclude: /node_modules/,
+			include: path.resolve(__dirname, 'src/css'),
+			use: ['style-loader',
+				'css-loader',
+			],
+		}],
+	},
 };

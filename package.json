@@ -27,6 +27,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^8.0.3",
+    "css-loader": "^0.28.7",
     "eslint": "^4.12.1",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-airbnb-base": "^12.1.0",
@@ -36,6 +37,7 @@
     "html-webpack-plugin": "^2.30.1",
     "nodemon": "^1.12.1",
     "rimraf": "^2.6.2",
+    "style-loader": "^0.19.0",
     "webpack": "^3.9.1",
     "webpack-dev-server": "^2.9.7"
   },
@@ -44,38 +46,5 @@
       "env",
       "react"
     ]
-  },
-  "eslintConfig": {
-    "extends": [
-      "airbnb-base"
-    ],
-    "parser": "babel-eslint",
-    "plugins": [
-      "react"
-    ],
-    "env": {
-      "browser": true,
-      "node": true
-    },
-    "globals": {
-      "document": false
-    },
-    "rules": {
-      "linebreak-style": [
-        "error",
-        "windows"
-      ],
-      "max-len": [
-        1,
-        70,
-        2,
-        {
-          "ignoreComments": true
-        }
-      ],
-      "react/prop-types": [
-        2
-      ]
-    }
   }
 }
