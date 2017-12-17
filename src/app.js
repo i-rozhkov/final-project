@@ -1,4 +1,5 @@
 // import { AxiosProvider, Request, Get, Delete, Head, Post, Put, Patch, withAxios } from 'react-axios';
+import 'normalize.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import HeaderJsx from './jsx/Header.jsx';
