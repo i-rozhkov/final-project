@@ -7,6 +7,7 @@ module.exports = {
 	output: {
 		filename: 'bundle.js',
 		path: path.resolve(__dirname, 'dist'),
+		publicPath: '/',
 	},
 
 	plugins: [
@@ -52,5 +53,8 @@ module.exports = {
 				},
 			}],
 		}],
+	},
+	devServer: {
+		historyApiFallback: true,
 	},
 };

@@ -2,16 +2,25 @@
 import 'normalize.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import HeaderJsx from './jsx/Header.jsx';
+import { Switch, Route, BrowserRouter } from 'react-router-dom';
+import Header from './components/Header';
 import './css/styles.css';
+import NotFound from './components/NotFound';
 
-class Header extends React.Component {
+class Home extends React.Component {
 	render() {
-		return HeaderJsx();
+		return (<Header />);
 	}
 }
 
 ReactDOM.render(
-	<Header />,
+	(
+		<BrowserRouter>
+			<Switch>
+				<Route exact path="/" component={Home} />
+				<Route component={NotFound} />
+			</Switch>
+		</BrowserRouter>
+	),
 	document.getElementById('main'),
 );
