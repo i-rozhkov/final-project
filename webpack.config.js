@@ -36,8 +36,19 @@ module.exports = {
 		rules: [{
 			test: /\.(js|jsx)$/,
 			exclude: /node_modules/,
-			use: ['babel-loader',
-				'eslint-loader',
+			use: [{
+				loader: 'babel-loader',
+				options: {
+					presets: [
+						['env', {
+							targets: {
+								browsers: ['last 2 versions', 'ie >= 11'],
+							},
+						}],
+					],
+				},
+			},
+			{ loader: 'eslint-loader' },
 			],
 		},
 		{

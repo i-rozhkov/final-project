@@ -148,6 +148,8 @@ header {
 	font-size: 14px;
 	letter-spacing: .5px;
 	padding-left: 10px;
+	border: none;
+	outline-color: rgb(60, 252, 118);
 }
 
 .signup-form {
