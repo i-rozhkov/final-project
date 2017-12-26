@@ -53,26 +53,39 @@ header {
 .menu-item {
 	margin: 0;
 	padding: 0;
-	border-left: 2px solid #fff;
 	background-color: #D80999;
-	transition-property: background, border, box-shadow;
+	transition-property: background, border, display;
 	transition-timing-function: ease-in;
 	transition-duration: .15s;
 	position: relative;
 }
 
-.menu-item:first-child {
-	border-left: none;
+.menu-item:before {
+	position: absolute;
+	content: "";
+	display: block;
+	height: 40px;
+	width: 2px;
+	background-color: rgb(247, 71, 182);
+	top: 10px;
+	border-radius: 1px;
+	left: -1px;
+}
+
+.menu-item:first-child:before {
+	display: none;
 }
 
 .menu-item:hover {
-	border-left-color: #D11170;
 	background-color: #D11170;
-	/* box-shadow: 0 3px #ccc; */
 }
 
-.menu-item:hover + .menu-item {
-	border-left-color: #D11170;
+.menu-item:hover:before {
+	display: none;
+}
+
+.menu-item:hover + .menu-item:before {
+	display: none;
 }
 
 .menu-item:hover > .submenu {
