@@ -14,6 +14,9 @@ module.exports = {
 		new webpack.NoEmitOnErrorsPlugin(),
 		new HtmlWebpackPlugin({
 			template: './src/index.html',
+			title: 'ForestLib',
+			favicon: './src/img/favicon.ico',
+			filename: 'index.html',
 			inject: 'body',
 		}),
 	],
@@ -60,6 +63,16 @@ module.exports = {
 				options: {
 					name: '[name].[ext]',
 					outputPath: 'svg/',
+				},
+			}],
+		},
+		{
+			test: /.(ico)(\?[a-z0-9]+)?$/,
+			use: [{
+				loader: 'file-loader',
+				options: {
+					name: '[name].[ext]',
+					outputPath: 'img/',
 				},
 			}],
 		}],

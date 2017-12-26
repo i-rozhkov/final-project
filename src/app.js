@@ -6,6 +6,7 @@ import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import Header from './components/Header';
 import './css/styles.css';
 import NotFound from './components/NotFound';
+import './img/favicon.ico';
 
 class Home extends React.Component {
 	render() {

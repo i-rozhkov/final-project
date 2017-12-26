@@ -11,6 +11,7 @@ export default class Header extends React.Component {
 			<header>
 
 				<div className="logo">
+					<p className="logo-name">ForestLib</p>
 					<img src={logo} alt="logo"/>
 				</div>
 
