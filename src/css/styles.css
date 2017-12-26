@@ -52,22 +52,52 @@ a {
 
 .signup-form p {
 	color: #000;
-	margin: 5px;
+	margin: 2px 0 3px;
 	padding: 0;
+	margin-top: 5px;
 }
 
 .signup-form a {
-	margin: 0 8px 0;
+	display: inline-block;
+	margin: 0;
+	font-size: 11px;
 }
 
-.signup-form .fa-facebook-official:hover {
-	color: #3b5998;
+.fa-facebook-official, .fa-google-plus-square, .fa-twitter-square {
+	background-color: #fff;
+	width: 30px;
+	height: 30px;
+	border-radius: 15px;
+	position: relative;
+	margin: 0 5px;
+}
+
+.fa-google-plus-square:before, .fa-facebook-official:before, .fa-twitter-square:before  {
+	position: absolute;
+	top: 3px;
+	left: 5px;
+}
+
+.fa-google-plus-square:before {
+	color: #DB4437
 }
 
 .signup-form .fa-google-plus-square:hover {
-	color: #DB4437;
+	background-color: #DB4437;
+}
+
+.fa-facebook-official:before {
+	color: #3b5998;
+}
+
+.signup-form .fa-facebook-official:hover {
+	background-color: #3b5998;
+}
+
+.fa-twitter-square:before {
+	color: #1DA1F2;
 }
 
 .signup-form .fa-twitter-square:hover {
-	color: #1DA1F2;
+	background-color: #1DA1F2;
 }

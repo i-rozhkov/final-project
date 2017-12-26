@@ -1,4 +1,4 @@
-// import { AxiosProvider, Request, Get, Delete, Head, Post, Put, Patch, withAxios } from 'react-axios';
+// import { AxiosProvider, Request, Get, Delete, Head, Post, Put, Patch } from 'react-axios';
 import 'normalize.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
