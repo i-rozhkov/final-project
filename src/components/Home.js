@@ -1,6 +1,13 @@
 import React from 'react';
 import Header from './Header';
 import Carousel from './Carousel';
+import Gallery from './Gallery';
+
+const urls = [
+	'https://placeimg.com/640/480/any',
+	'https://placeimg.com/640/480/any',
+	'https://placeimg.com/640/480/any',
+];
 
 // Data for carousel
 const carouselSlidesData = [
@@ -49,8 +56,9 @@ export default class Home extends React.Component {
 			<div>
 				<Header />
 				<div className="carousel-container">
-					<Carousel slides={ carouselSlidesData }/>
+					<Carousel slides={carouselSlidesData} />
 				</div>
+				<Gallery imageUrls={urls} />
 			</div>
 		);
 	}

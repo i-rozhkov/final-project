@@ -1,7 +1,7 @@
 {
-	"extends": ["airbnb-base"],
+	"extends": ["airbnb"],
 	"parser": "babel-eslint",
-	"plugins": ["react"],
+	"plugins": ["react", "jsx-a11y"],
 	"env": {
 		"browser": true,
 		"node": true
@@ -11,10 +11,13 @@
 	},
 	"rules": {
 		"linebreak-style": ["error", "windows"],
-		"indent": [2, "tab"],
+		"indent": [2, "tab", { "ignoredNodes": ["JSXElement *"] }],
+		"react/prefer-stateless-function": [0],
+		"react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+		"react/jsx-indent": [0],
 		"no-tabs": 0,
 		"react/prop-types": [2],
-		"class-methods-use-this": [2,
+		"class-methods-use-this": ["error",
 			{
 				"exceptMethods": [
 					"componentDidMount",
@@ -24,11 +27,18 @@
 					"componentWillUnmount",
 					"componentWillUpdate",
 					"render",
-					"shouldComponentUpdate"
+					"shouldComponentUpdate",
+					"showImage"
 				]
 			}
 		],
 		"react/jsx-uses-react": "error",
-		"react/jsx-uses-vars": "error"
+		"react/jsx-uses-vars": "error",
+		"jsx-a11y/anchor-is-valid": [0],
+		"jsx-a11y/anchor-has-content": [0],
+		"react/jsx-indent-props": [0],
+		"react/no-array-index-key": [0],
+		"jsx-a11y/click-events-have-key-events": [0],
+		
 	}
 }

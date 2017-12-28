@@ -4,6 +4,7 @@
     flex-direction: column;
     justify-content: center;
     min-height: 210px;
+    background-color: rgba(199, 21, 133, .4);
 }
 
 .carousel {

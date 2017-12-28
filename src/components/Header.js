@@ -12,7 +12,7 @@ export default class Header extends React.Component {
 
 				<div className="logo">
 					<p className="logo-name">ForestLib</p>
-					<img src={logo} alt="logo"/>
+					<img src={logo} alt="logo" />
 				</div>
 
 				<Nav />

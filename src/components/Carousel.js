@@ -52,19 +52,21 @@ export default class Carousel extends React.Component {
 				<a
 					href="#"
 					className="carousel__arrow carousel__arrow--left"
-					onClick={e => this.goToPrevSlide(e)}>
+					onClick={e => this.goToPrevSlide(e)}
+				>
 					<span className="fa fa-2x fa-angle-left" />
 				</a>
 
 				<ul className="carousel__slides">
 					{this.props.slides.map((slide, index) =>
-						<li
+						(<li
 							className={
 								index === this.state.activeIndex
 									? 'carousel__slide carousel__slide--active'
 									: 'carousel__slide'
 							}
-							key={index}>
+							key={index}
+						>
 							<p className="carousel-slide__content">{slide.content}</p>
 
 							<p>
@@ -73,29 +75,34 @@ export default class Carousel extends React.Component {
 								</strong>,
 								{' '}<small className="carousel-slide__source">
 									{slide.source}
-								</small>
+             </small>
 							</p>
-						</li>)}
+       </li>))}
 				</ul>
 
 				<a
 					href="#"
 					className="carousel__arrow carousel__arrow--right"
-					onClick={e => this.goToNextSlide(e)}>
+					onClick={e => this.goToNextSlide(e)}
+				>
 					<span className="fa fa-2x fa-angle-right" />
 				</a>
 
 				<ul className="carousel__indicators">
 					{this.props.slides.map((slide, index) =>
-						<li key={index}>
+						(<li key={index}>
 							<a
 								className={
 									index === this.state.activeIndex
 										? 'carousel__indicator carousel__indicator--active'
 										: 'carousel__indicator'
 								}
-								onClick={() => this.goToSlide(index)}/>
-						</li>)}
+								onClick={() => this.goToSlide(index)}
+								role="button"
+								tabIndex={0}
+							/>
+							</li>))
+					}
 				</ul>
 			</div>
 		);
@@ -103,5 +110,5 @@ export default class Carousel extends React.Component {
 }
 
 Carousel.propTypes = {
-	slides: PropTypes.array,
+	slides: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
