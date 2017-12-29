@@ -4,9 +4,18 @@ import Carousel from './Carousel';
 import Gallery from './Gallery';
 
 const urls = [
-	'https://placeimg.com/640/480/any',
-	'https://placeimg.com/640/480/any',
-	'https://placeimg.com/640/480/any',
+	'https://placeimg.com/250/300/any',
+	'https://placeimg.com/300/250/any',
+	'https://placeimg.com/200/250/any',
+	'https://placeimg.com/250/300/any',
+	'https://placeimg.com/300/250/any',
+	'https://placeimg.com/200/250/any',
+	'https://placeimg.com/250/300/any',
+	'https://placeimg.com/300/250/any',
+	'https://placeimg.com/200/250/any',
+	'https://placeimg.com/250/300/any',
+	'https://placeimg.com/300/250/any',
+	'https://placeimg.com/200/250/any',
 ];
 
 // Data for carousel

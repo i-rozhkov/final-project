@@ -7,12 +7,14 @@ import './css/styles.css';
 import NotFound from './components/NotFound';
 import './img/favicon.ico';
 import Home from './components/Home';
+import Contacts from './components/Contacts';
 
 ReactDOM.render(
 	(
 		<BrowserRouter>
 			<Switch>
 				<Route exact path="/" component={Home} />
+				<Route path="/contacts" component={Contacts} />
 				<Route component={NotFound} />
 			</Switch>
 		</BrowserRouter>
