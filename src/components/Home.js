@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './Header';
 import Carousel from './Carousel';
 import Gallery from './Gallery';
+import Footer from './Footer';
 
 const pattern = [
 	'https://picsum.photos/200/300',
@@ -65,13 +66,14 @@ const carouselSlidesData = [
 export default class Home extends React.Component {
 	render() {
 		return (
-			<div>
+			<section>
 				<Header />
 				<div className="carousel-container">
 					<Carousel slides={carouselSlidesData} />
 				</div>
 				<Gallery imageUrls={urls} />
-			</div>
+				<Footer />
+			</section>
 		);
 	}
 }

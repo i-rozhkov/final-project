@@ -78,7 +78,7 @@ module.exports = {
 			}],
 		},
 		{
-			test: /.(ico)(\?[a-z0-9]+)?$/,
+			test: /.(ico|png)(\?[a-z0-9]+)?$/,
 			use: [{
 				loader: 'file-loader',
 				options: {

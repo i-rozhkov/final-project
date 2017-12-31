@@ -2,18 +2,14 @@ import React from 'react';
 import Social from './Social';
 import SearchField from './SearchField';
 import Nav from './Nav';
-
-const logo = require('../img/logo.svg');
+import Logo from './Logo';
 
 export default class Header extends React.Component {
 	render() {
 		return (
 			<header>
 
-				<div className="logo">
-					<p className="logo-name">ForestLib</p>
-					<img src={logo} alt="logo" />
-				</div>
+				<Logo />
 
 				<Nav />
 

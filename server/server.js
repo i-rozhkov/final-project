@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 
-const config = require('../config/config.json'); 
+const config = require('../config/config.json');
 const users = require('../data/users.json');
 
 const app = express();
@@ -12,5 +12,5 @@ app.get('/', (req, res) => res.sendFile(path.resolve(__dirname, '../dist/index.h
 app.get('/users', (req, res) => res.json(users));
 
 app.listen(config.port, () => {
-    console.log(`Application ${config.name} is up and running on http://${config.host}:${config.port}.`);
+	console.log(`Application ${config.name} is running on http://${config.host}:${config.port}.`);
 });
