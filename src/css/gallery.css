@@ -1,16 +1,20 @@
 @import url('./spinner.css');
+@import url('./pagination.css');
 
 .gallery {
 	border: 2px solid #f0f;
+	display: flex;
+	flex-direction: row-reverse;
 }
 
 .images {
 	display: flex;
 	justify-content: space-around;
-	flex-direction: row;
 	flex-wrap: wrap;
 	height: 600px;
 	overflow-y: auto;
+	width: 80%;
+	border: 2px solid rgb(115, 29, 172);
 }
 
 .pic-holder {
@@ -21,5 +25,9 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	margin: 10px;
+	margin: 10px 10px;
+}
+
+.loader {
+	position: absolute;
 }

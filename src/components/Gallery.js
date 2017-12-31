@@ -1,27 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Pagination from './Pagination';
 
 export default class Gallery extends React.Component {
 	constructor(props) {
 		super(props);
+		let exampleItems = [];
+
+		exampleItems = this.props.imageUrls.map((i, index) => ({
+			id: index,
+			url: i,
+		}));
+
 		this.state = {
 			loading: true,
+			exampleItems,
+			pageOfItems: [],
 		};
+
 		this.handleStateChange = this.handleStateChange.bind(this);
 		this.imagesLoaded = this.imagesLoaded.bind(this);
+		this.onChangePage = this.onChangePage.bind(this);
 	}
 
-	showImage(imageUrl, index) {
-		return (
-			<div className="pic-holder" key={index}>
-				<img
-					src={imageUrl}
-					alt="Book"
-					onLoad={this.handleStateChange}
-					onError={this.handleStateChange}
-				/>
-			</div>
-		);
+	onChangePage(pageOfItems) {
+		// update state with new page of items
+		this.setState({ pageOfItems });
 	}
 
 	imagesLoaded(parentNode) {
@@ -37,6 +41,19 @@ export default class Gallery extends React.Component {
 		});
 	}
 
+	showImage(imageUrl, index) {
+		return (
+			<div className="pic-holder" key={index}>
+				<img
+					src={imageUrl}
+					alt="Book"
+					onLoad={this.handleStateChange}
+					onError={this.handleStateChange}
+				/>
+			</div>
+		);
+	}
+
 	renderSpinner() {
 		if (!this.state.loading) {
 			// Render nothing if not loading
@@ -47,12 +64,17 @@ export default class Gallery extends React.Component {
 		);
 	}
 
+
 	render() {
 		return (
 			<div className="gallery" ref={(c) => { this.gallery = c; }}>
-				{this.renderSpinner()}
 				<div className="images">
-					{this.props.imageUrls.map((imageUrl, index) => this.showImage(imageUrl, index))}
+					{this.renderSpinner()}
+					{this.state.pageOfItems.map(item => this.showImage(item.url, item.id))}
+					<Pagination
+						items={this.state.exampleItems}
+						onChangePage={this.onChangePage}
+					/>
 				</div>
 			</div>
 		);

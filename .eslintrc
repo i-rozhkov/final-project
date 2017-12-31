@@ -31,7 +31,8 @@
 					"shouldComponentUpdate",
 					"showImage",
 					"imagesLoaded",
-					"loadJS"
+					"loadJS",
+					"getPager"
 				]
 			}
 		],
