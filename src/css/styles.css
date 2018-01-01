@@ -57,8 +57,8 @@ footer .logo {
 }
 
 .searchField {
-	height: 30px;
-	width: 250px;
+	height: 32px;
+	width: 400px;
 	font-family: 'Bubblegum Sans', cursive;
 	font-size: 14px;
 	letter-spacing: .5px;
@@ -68,7 +68,7 @@ footer .logo {
 	background-image: url('../img/search.svg');
 	background-repeat: no-repeat;
 	background-size: 24px 24px;
-	background-position: 223px 3px;
+	background-position: 373px 3px;
 }
 
 .signup-form {
@@ -121,7 +121,7 @@ footer .logo {
 }
 
 footer {
-	height: 180px;
+	height: 160px;
 	width: 100%;
 	display: flex;
 	justify-content: space-around;

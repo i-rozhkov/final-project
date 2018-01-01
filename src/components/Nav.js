@@ -24,7 +24,6 @@ export default class Nav extends React.Component {
 						</ul>
 					</li>
 					<li className="menu-item"><Link to="/contacts">Contacts</Link></li>
-					<li className="menu-item"><Link to="/about">About</Link></li>
 				</ul>
 			</nav>
 		);

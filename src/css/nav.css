@@ -3,7 +3,6 @@
 	padding: 0;
 	list-style-type: none;
 	display: flex;
-	width: 400px;
 	justify-content: space-around;
 	height: 60px;
 }

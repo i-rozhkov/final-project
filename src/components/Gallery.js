@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import Pagination from './Pagination';
 
 export default class Gallery extends React.Component {
@@ -44,12 +45,14 @@ export default class Gallery extends React.Component {
 	showImage(imageUrl, index) {
 		return (
 			<div className="pic-holder" key={index}>
-				<img
-					src={imageUrl}
-					alt="Book"
-					onLoad={this.handleStateChange}
-					onError={this.handleStateChange}
-				/>
+				<Link to={`/books/${index}`}>
+					<img
+						src={imageUrl}
+						alt="Book"
+						onLoad={this.handleStateChange}
+						onError={this.handleStateChange}
+					/>
+				</Link>
 			</div>
 		);
 	}

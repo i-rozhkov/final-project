@@ -8,6 +8,8 @@ import NotFound from './components/NotFound';
 import './img/favicon.ico';
 import Home from './components/Home';
 import Contacts from './components/Contacts';
+import Books from './components/Books';
+import Book from './components/Book';
 
 ReactDOM.render(
 	(
@@ -15,6 +17,8 @@ ReactDOM.render(
 			<Switch>
 				<Route exact path="/" component={Home} />
 				<Route path="/contacts" component={Contacts} />
+				<Route path="/books" component={Books} />
+				<Route path="/books/:id" component={Book} />
 				<Route component={NotFound} />
 			</Switch>
 		</BrowserRouter>
