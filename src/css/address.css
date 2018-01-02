@@ -79,6 +79,10 @@
 	width: 125px;
 }
 
+.us .image {
+	background-position-x: 15px;
+}
+
 .row a {
 	text-decoration: none;
 	color: #ad095b;

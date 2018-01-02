@@ -25,12 +25,12 @@ export default class Footer extends React.Component {
 
 				<div className="social">
 					<p>Social Networks</p>
-					<a href="#"><img src={facebook} alt="facebook" />Come by Facebook</a>
-					<a href="#"><img src={twitter} alt="twitter" />Subscribe to Twitter</a>
-					<a href="#"><img src={tumblr} alt="tumblr" />Watch us on Tumblr</a>
-					<a href="#"><img src={instagram} alt="instagram" />See what is going on</a>
-					<a href="#"><img src={telegram} alt="telegram" />Join now Telegram</a>
-					<a href="#"><img src={whatsapp} alt="telegram" />Stay in contact</a>
+					<a href="http://facebook.com/forestlib"><img src={facebook} alt="facebook" />Come by Facebook</a>
+					<a href="http://twitter.com/forestlib"><img src={twitter} alt="twitter" />Subscribe to Twitter</a>
+					<a href="http://tumblr.com/forestlib"><img src={tumblr} alt="tumblr" />Watch us on Tumblr</a>
+					<a href="http://instagram.com/forestlib"><img src={instagram} alt="instagram" />See what is going on</a>
+					<a href="https://telegram.me/forestlib"><img src={telegram} alt="telegram" />Join now Telegram</a>
+					<a href="http://whatsapp.com/forestlib"><img src={whatsapp} alt="whatsapp" />Stay in contact</a>
 				</div>
 			</footer>
 		);

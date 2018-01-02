@@ -7,6 +7,10 @@
 @import url('./not-found.css');
 @import url('./address.css');
 
+* {
+	outline-color: rgb(60, 252, 118);
+}
+
 html, body {
 	min-height: 100%;
 	margin: 0;
@@ -24,6 +28,10 @@ header {
 	align-items: center;
 	font-family: 'Nobile', sans-serif;
 	font-size: 14px;
+}
+
+.logo-anchor {
+	width: 150px;
 }
 
 /* Reset default values */
@@ -69,18 +77,17 @@ footer .logo {
 }
 
 .searchField {
-	height: 32px;
-	width: 400px;
+	height: 36px;
+	width: 420px;
 	font-family: 'Bubblegum Sans', cursive;
-	font-size: 14px;
+	font-size: 18px;
 	letter-spacing: .5px;
 	padding-left: 10px;
 	border: none;
-	outline-color: rgb(60, 252, 118);
 	background-image: url('../img/search.svg');
 	background-repeat: no-repeat;
-	background-size: 24px 24px;
-	background-position: 373px 3px;
+	background-size: 30px 30px;
+	background-position: 385px 3px;
 }
 
 .signup-form {
@@ -92,7 +99,9 @@ footer .logo {
 .signup-form p {
 	color: #000;
 	padding: 0;
-	margin: 5px 8px 3px auto;
+	margin: 0 5px 0 auto;
+	font-family: 'Bubblegum Sans', cursive;
+	font-size: 20px;
 }
 
 .signup-form a {
