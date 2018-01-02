@@ -4,17 +4,17 @@
 .gallery {
 	border: 2px solid #f0f;
 	display: flex;
-	flex-direction: row-reverse;
+	flex-direction: row;
 }
 
 .images {
 	display: flex;
 	justify-content: space-around;
 	flex-wrap: wrap;
-	height: 600px;
+	height: 702px;
 	overflow-y: auto;
 	width: 80%;
-	border: 2px solid rgb(115, 29, 172);
+	background-color: rgb(214, 241, 239);
 }
 
 .pic-holder {

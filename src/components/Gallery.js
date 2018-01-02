@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Pagination from './Pagination';
+import SideMenu from './SideMenu';
 
 export default class Gallery extends React.Component {
 	constructor(props) {
@@ -71,6 +72,7 @@ export default class Gallery extends React.Component {
 	render() {
 		return (
 			<div className="gallery" ref={(c) => { this.gallery = c; }}>
+				<SideMenu />
 				<div className="images">
 					{this.renderSpinner()}
 					{this.state.pageOfItems.map(item => this.showImage(item.url, item.id))}

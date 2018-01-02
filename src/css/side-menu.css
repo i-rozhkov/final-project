@@ -1,0 +1,27 @@
+aside {
+	width: 20%;
+}
+
+.side-menu-list {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.side-menu-item {
+	padding: 6px 0;
+	width: 100%;
+	background: #ffffff; /* Old browsers */
+	background: -moz-linear-gradient(top, #ffffff 0%, #e5e5e5 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, #ffffff 0%,#e5e5e5 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	text-align: center;	
+}
+
+.side-menu-item a {
+	color: hsl(355, 72%, 55%);
+	text-decoration: none;
+	font-family: 'Fredericka the Great', cursive;
+	font-size: 24px;
+}
