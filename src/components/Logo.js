@@ -1,14 +1,17 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const logo = require('../img/logo.svg');
 
 export default class Logo extends React.Component {
 	render() {
 		return (
-			<div className="logo">
-				<p className="logo-name">ForestLib</p>
-				<img src={logo} alt="logo" />
-			</div>
+			<Link to="/">
+				<div className="logo">
+					<p className="logo-name site-name">ForestLib</p>
+					<img src={logo} alt="logo" />
+				</div>
+			</Link>
 		);
 	}
 }

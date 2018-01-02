@@ -17,8 +17,8 @@ ReactDOM.render(
 			<Switch>
 				<Route exact path="/" component={Home} />
 				<Route path="/contacts" component={Contacts} />
-				<Route path="/books" component={Books} />
 				<Route path="/books/:id" component={Book} />
+				<Route path="/books" component={Books} />
 				<Route component={NotFound} />
 			</Switch>
 		</BrowserRouter>

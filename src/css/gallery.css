@@ -19,13 +19,20 @@
 
 .pic-holder {
 	width: 300px;
-	height: 300px;
 	border: 1px solid rgb(128, 0, 128); 
 	border-radius: 2px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	margin: 10px 10px;
+}
+
+.pic-holder a {
+	height: inherit;
+}
+
+.pic-holder img {
+	vertical-align: middle;
 }
 
 .loader {

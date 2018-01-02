@@ -1,9 +1,15 @@
-#map {
-	height: 100%;
+#app {
+	height: 500px;
+	width: 800px;
+	margin: 30px auto;
 }
 
-#app {
-	height: 300px;
-	width: 600px;
-	margin-left: 100px;
+#app p {
+	font-family: 'Fredericka the Great', cursive;
+	text-align: center;
+	font-size: 24px;
+}
+
+#map {
+	height: 450px;
 }

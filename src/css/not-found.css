@@ -1,0 +1,40 @@
+@font-face {
+	font-family: "Paw Prints";
+	src: url("../fonts/PawPrints.ttf");
+}
+
+.not-found {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.not-found footer {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+}
+
+.error-message-container {
+	width: 850px;
+	margin: 20px auto;
+	padding: 0;
+	text-align: center;
+}
+
+.error-message-container p {
+	padding: 0;
+}
+
+.main-error-message {
+	font-family: "Paw Prints", Helvetica, sans-serif;
+	font-size: 50px;
+	letter-spacing: 8px;
+	line-height: 40px;
+}
+
+.error-description {
+	font-family: 'Fredericka the Great', cursive;
+	font-size: 26px;
+	line-height: 36px;
+}

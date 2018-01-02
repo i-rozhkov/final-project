@@ -1,0 +1,86 @@
+.address-table {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-family: 'Bubblegum Sans', cursive;
+	font-size: 18px;
+	border-top: 1px solid #aaa;
+	border-bottom: 1px solid #aaa;
+	padding-bottom: 20px;
+}
+
+.address-table h2 {
+	font-size: 30px;
+	margin: 20px 0 0;
+	padding: 0;
+	letter-spacing: 1px;
+}
+
+.address-table > p {
+	font-style: italic;
+	padding: 0;
+	margin: 0;
+	font-size: 14px;
+}
+
+.thead, 
+.row {
+	display: flex;
+	justify-content: space-between;
+	width: 900px;
+	align-items: center;
+	text-align: center;
+}
+
+.thead div, 
+.row div {
+	width: 200px;
+}
+
+.thead {
+	font-style: italic;	
+	font-size: 20px;
+	padding: 5px;
+	border-bottom: 1px solid #aaa;
+	margin-top: 30px;
+}
+
+.row {
+	margin: 10px 0;
+}
+
+.title {
+	font-weight: bold;
+}
+
+.thead .image {
+	width: 125px;
+}
+
+.us .image {
+	background-image: url('../img/us.png');
+}
+
+.ua .image {
+	background-image: url('../img/ua.png');
+}
+
+.ru .image {
+	background-image: url('../img/ru.png');
+}
+
+.us .image, 
+.ua .image, 
+.ru .image {
+	height: 180px;
+	background-position-y: 16px;
+	background-repeat: no-repeat;
+	width: 125px;
+}
+
+.row a {
+	text-decoration: none;
+	color: #ad095b;
+	text-align: center;
+}
