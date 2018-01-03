@@ -1,0 +1,100 @@
+.profile {
+	display: flex;
+	justify-content: space-around;
+	width: 90%;
+	margin: 20px auto;
+}
+
+.book-profile {
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	margin: 0 auto;
+	font-family: 'Bubblegum Sans', cursive;
+	background-color: rgb(235, 254, 255);
+	width: 75%;
+}
+
+.breadcrumb-list {
+	background-color: rgb(252, 215, 255);
+	width: 100%;
+	display: flex;
+	margin: 20px 60px;
+}
+
+.breadcrumb-item a {
+	text-decoration: none;
+	color: rgb(125, 34, 148);
+	font-size: 20px;
+}
+
+.breadcrumb-item:not(:first-child):before {
+	content: '/';
+	margin: 0 10px;
+}
+
+.book-profile:not(:first-child) {
+	flex: 1;
+}
+
+.book-title {
+	font-family: 'Fredericka the Great', cursive;
+	font-size: 24px;
+	margin: 0;
+}
+
+.book-author {
+	font-style: italic;
+	margin-top: 5px;
+}
+
+.read-button {
+	height: 50px;
+	width: 150px;
+}
+
+.extra-books {
+	font-family: 'Bubblegum Sans', cursive;
+	font-size: 14px;
+	background-color: rgba(255, 134, 235, 0.37);
+	width: 25%;
+}
+
+.extra-paragraph {
+	text-align: center;
+	margin: 5px 0;
+	font-size: 20px;
+}
+
+.extra-list {
+	display: flex;
+	flex-direction: column;
+}
+
+.extra-item {
+	display: flex;
+	align-items: flex-start;
+	margin: 5px 0;
+}
+
+.extra-cover {
+	margin-left: 18px;
+	margin-right: 10px;
+	width: 80px;
+	height: 100px;
+}
+
+.extra-item p {
+	margin: 0 0 5px;
+}
+
+.extra-title {
+	margin-top: 0;
+	font-family: 'Fredericka the Great', cursive;
+	font-size: 16px;
+}
+
+.extra-author {
+	font-style: italic;
+}

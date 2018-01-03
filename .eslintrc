@@ -32,7 +32,8 @@
 					"showImage",
 					"imagesLoaded",
 					"loadJS",
-					"getPager"
+					"getPager",
+					"generateBreadCrumb"
 				]
 			}
 		],

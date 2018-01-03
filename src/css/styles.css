@@ -7,6 +7,7 @@
 @import url('./not-found.css');
 @import url('./address.css');
 @import url('./side-menu.css');
+@import url('./profile.css');
 
 * {
 	outline-color: rgb(60, 252, 118);
