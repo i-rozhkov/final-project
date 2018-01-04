@@ -18,25 +18,7 @@
 		"no-tabs": 0,
 		"max-len": ["error", { "code": 100, "ignoreStrings": true, "ignoreComments": true }],
 		"react/prop-types": [2],
-		"class-methods-use-this": ["error",
-			{
-				"exceptMethods": [
-					"componentDidMount",
-					"componentDidUpdate",
-					"componentWillMount",
-					"componentWillReceiveProps",
-					"componentWillUnmount",
-					"componentWillUpdate",
-					"render",
-					"shouldComponentUpdate",
-					"showImage",
-					"imagesLoaded",
-					"loadJS",
-					"getPager",
-					"generateBreadCrumb"
-				]
-			}
-		],
+		"class-methods-use-this": [0],
 		"react/jsx-uses-react": "error",
 		"react/jsx-uses-vars": "error",
 		"jsx-a11y/anchor-is-valid": [0],

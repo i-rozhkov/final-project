@@ -19,20 +19,52 @@
 
 .pic-holder {
 	width: 300px;
-	border: 1px solid rgb(128, 0, 128); 
+	height: 300px;
 	border-radius: 2px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	margin: 10px 10px;
+	border: 1px solid #000;
+	margin: 20px 0 5px;
+	transition: all .25s ease;
+}
+
+.pic-holder:hover {
+	border-color: rgb(128, 216, 125);
+	opacity: 0.8;
 }
 
 .pic-holder a {
-	height: inherit;
+	display: inline-block;
+	text-align: center;
 }
 
 .pic-holder img {
 	vertical-align: middle;
+}
+
+.gallery-item {
+	width: 300px;
+}
+
+.gallery-item-title, .gallery-item-author {
+	padding: 0;
+	margin: 0;
+	text-align: center;
+}
+
+.gallery-item-title a, .gallery-item-author a {
+	text-decoration: none;
+	color: #000;
+}
+
+.gallery-item-title {
+	font-family: 'Fredericka the Great', cursive;
+	font-size: 20px;
+}
+
+.gallery-item-title a:hover, .gallery-item-author a:hover {
+	color: rgb(92, 163, 44);
 }
 
 .loader {

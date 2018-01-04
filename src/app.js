@@ -1,4 +1,3 @@
-// import { AxiosProvider, Request, Get, Delete, Head, Post, Put, Patch } from 'react-axios';
 import 'normalize.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -16,6 +15,11 @@ ReactDOM.render(
 		<BrowserRouter>
 			<Switch>
 				<Route exact path="/" component={Home} />
+				{/* <Route path="/categories" component={Categories} />  */}
+				{/* <Route path="/category/:categoryName" component={Category}/> */}
+				{/* <Route path="/popular" component={Popular} /> */}
+				{/* <Route path="/new" component={New} /> */}
+				{/* <Route path="/bestsellers" component={Bestsellers} /> */}
 				<Route path="/contacts" component={Contacts} />
 				<Route path="/books/:id" component={Book} />
 				<Route path="/books" component={Books} />
