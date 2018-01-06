@@ -1,22 +1,21 @@
 import React from 'react';
-import Breadcrumbs from './Breadcrumbs';
+import PropTypes from 'prop-types';
 
 export default class Profile extends React.Component {
 	render() {
 		return (
 			<section className="profile">
 				<div className="book-profile">
-					<Breadcrumbs />
 					<div className="book-cover">
-						<img src="https://picsum.photos/300/300" alt="cover" />
+						{<img src={this.props.book.image} alt="cover" />}
 					</div>
 					<div className="book-description">
-						<p className="book-title">Some title</p>
-						<p className="book-author">by Some author</p>
-						<p className="book-summary">Longlonglonglonglonglonglonglonglonglonglong text</p>
-						<div className="book-score">Some score</div>
+						<p className="book-title">{this.props.book.title}</p>
+						<p className="book-author">by {this.props.book.author}</p>
+						<p className="book-summary">{this.props.book.summary}</p>
+						<div className="book-score">{this.props.book.score}</div>
+						<button className="read-button">Read</button>
 					</div>
-					<button className="read-button">Read</button>
 				</div>
 				<aside className="extra-books">
 					<p className="extra-paragraph">Read with this book</p>
@@ -59,3 +58,7 @@ export default class Profile extends React.Component {
 		);
 	}
 }
+
+Profile.propTypes = {
+	book: PropTypes.objectOf(PropTypes.any).isRequired,
+};

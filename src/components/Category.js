@@ -2,28 +2,27 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Header from './Header';
 import Footer from './Footer';
-import Profile from './Profile';
+import Gallery from './Gallery';
 import Breadcrumbs from './Breadcrumbs';
 
 const booksList = require('../../data/users.json');
 
-const Book = ({ match }) => {
-	const title = match.params.id.split('-').map(item => item[0].toUpperCase() + item.slice(1)).join(' ');
-
-	const bookItem = booksList.filter(item => item.title.indexOf(title) !== -1);
-	console.log(bookItem[0]);
+const Category = ({ match }) => {
+	const categoryName = match.params.categoryName[0].toUpperCase() +
+		match.params.categoryName.slice(1);
+	const categorized = booksList.filter(item => item.category.indexOf(categoryName) !== -1);
 	return (
 		<section>
 			<Header />
 			<Breadcrumbs />
-			<Profile book={bookItem[0]} />
+			<Gallery booksList={categorized} />
 			<Footer />
 		</section>
 	);
 };
 
-Book.propTypes = {
+Category.propTypes = {
 	match: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
-export default Book;
+export default Category;

@@ -10,7 +10,6 @@ aside {
 }
 
 .side-menu-item {
-	padding: 6px 0;
 	width: 100%;
 	background: #ffffff; /* Old browsers */
 	background: -moz-linear-gradient(top, #ffffff 0%, #e5e5e5 100%); /* FF3.6-15 */
@@ -20,6 +19,9 @@ aside {
 }
 
 .side-menu-item a {
+	display: block;
+	width: 100%;
+	padding: 6px 0;
 	color: hsl(355, 72%, 55%);
 	text-decoration: none;
 	font-family: 'Fredericka the Great', cursive;

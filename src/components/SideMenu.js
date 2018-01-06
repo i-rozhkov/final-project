@@ -11,7 +11,9 @@ const renderSideList = (category, index) => {
 	const categoryToLow = category.toLowerCase();
 	return (
 		<li key={index} className="side-menu-item">
-			<Link to={`books/category/${categoryToLow}`}>{category}</Link>
+			<Link to={`/category/${categoryToLow}`}>
+				{category}
+			</Link>
 		</li>
 	);
 };

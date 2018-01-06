@@ -15,12 +15,12 @@ export default class Nav extends React.Component {
 							<li className="submenu-item"><Link to="/books/categories">Categories</Link></li>
 						</ul>
 					</li>
-					<li className="menu-item"><Link to="/audio">Audiobooks</Link>
+					<li className="menu-item"><Link to="/audios">Audiobooks</Link>
 						<ul className="submenu">
-							<li className="submenu-item"><Link to="/audio/bestsellers">Bestsellers</Link></li>
-							<li className="submenu-item"><Link to="/audio/popular">Popular Now</Link></li>
-							<li className="submenu-item"><Link to="/audio/new">New</Link></li>
-							<li className="submenu-item"><Link to="/audio/categories">Categories</Link></li>
+							<li className="submenu-item"><Link to="/audios/bestsellers">Bestsellers</Link></li>
+							<li className="submenu-item"><Link to="/audios/popular">Popular Now</Link></li>
+							<li className="submenu-item"><Link to="/audios/new">New</Link></li>
+							<li className="submenu-item"><Link to="/audios/categories">Categories</Link></li>
 						</ul>
 					</li>
 					<li className="menu-item"><Link to="/contacts">Contacts</Link></li>

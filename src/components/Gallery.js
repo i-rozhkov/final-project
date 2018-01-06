@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 // import axios from 'axios';
 import Pagination from './Pagination';
 import SideMenu from './SideMenu';
 
-const mockdata = require('../../data/users.json');
-
 const getMainCategory = (category) => {
 	const indexOfDivider = category.indexOf('|');
-	return indexOfDivider === -1 ? category : category.slice(0, indexOfDivider);
+	const mainCategory = indexOfDivider === -1 ? category : category.slice(0, indexOfDivider);
+	return mainCategory.toLowerCase();
 };
 
 export default class Gallery extends React.Component {
@@ -17,7 +17,7 @@ export default class Gallery extends React.Component {
 
 		this.state = {
 			loading: true,
-			exampleItems: mockdata,
+			exampleItems: this.props.booksList,
 			pageOfItems: [],
 		};
 
@@ -57,7 +57,7 @@ export default class Gallery extends React.Component {
 	showImage(item) {
 		return (
 			<div className="gallery-item" key={item.id}>
-				<Link to={`/categories/${getMainCategory(item.category)}/${item.title.toLowerCase().replace(/ /g, '-')}`}>
+				<Link to={`/category/${getMainCategory(item.category)}/${item.title.toLowerCase().replace(/ /g, '-')}`}>
 					<div className="pic-holder">
 						<img
 							src={item.image}
@@ -68,7 +68,7 @@ export default class Gallery extends React.Component {
 					</div>
 				</Link>
 				<p className="gallery-item-title">
-					<Link to={`/categories/${getMainCategory(item.category)}/${item.title.toLowerCase().replace(/ /g, '-')}`}>
+					<Link to={`/category/${getMainCategory(item.category)}/${item.title.toLowerCase().replace(/ /g, '-')}`}>
 						{item.title}
 					</Link>
 				</p>
@@ -109,3 +109,7 @@ export default class Gallery extends React.Component {
 		);
 	}
 }
+
+Gallery.propTypes = {
+	booksList: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
