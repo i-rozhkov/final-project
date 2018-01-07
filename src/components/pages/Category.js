@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Header from './Header';
-import Footer from './Footer';
-import Gallery from './Gallery';
-import Breadcrumbs from './Breadcrumbs';
+import Header from '../units/Header';
+import Footer from '../units/Footer';
+import Gallery from '../units/Gallery';
+import Breadcrumbs from '../units/Breadcrumbs';
 
-const booksList = require('../../data/users.json');
+const booksList = require('../../../data/users.json');
 
 const Category = ({ match }) => {
 	const categoryName = match.params.categoryName[0].toUpperCase() +

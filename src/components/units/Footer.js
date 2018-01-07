@@ -1,12 +1,12 @@
 import React from 'react';
 import Logo from './Logo';
 
-const facebook = require('../img/facebook.svg');
-const twitter = require('../img/twitter.svg');
-const tumblr = require('../img/tumblr.svg');
-const instagram = require('../img/instagram.svg');
-const telegram = require('../img/telegram.svg');
-const whatsapp = require('../img/whatsapp.svg');
+const facebook = require('../../img/facebook.svg');
+const twitter = require('../../img/twitter.svg');
+const tumblr = require('../../img/tumblr.svg');
+const instagram = require('../../img/instagram.svg');
+const telegram = require('../../img/telegram.svg');
+const whatsapp = require('../../img/whatsapp.svg');
 
 export default class Footer extends React.Component {
 	render() {

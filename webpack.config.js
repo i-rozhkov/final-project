@@ -15,7 +15,6 @@ module.exports = {
 		new HtmlWebpackPlugin({
 			template: './src/index.html',
 			title: 'ForestLib',
-			favicon: './src/img/favicon.ico',
 			filename: 'index.html',
 			inject: 'body',
 		}),
@@ -78,7 +77,7 @@ module.exports = {
 			}],
 		},
 		{
-			test: /.(ico|png)(\?[a-z0-9]+)?$/,
+			test: /.(ico|png|jpg)(\?[a-z0-9]+)?$/,
 			use: [{
 				loader: 'file-loader',
 				options: {

@@ -1,17 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Header from './Header';
-import Footer from './Footer';
-import Profile from './Profile';
-import Breadcrumbs from './Breadcrumbs';
+import Header from '../units/Header';
+import Footer from '../units/Footer';
+import Profile from '../units/Profile';
+import Breadcrumbs from '../units/Breadcrumbs';
 
-const booksList = require('../../data/users.json');
+const booksList = require('../../../data/users.json');
 
 const Book = ({ match }) => {
 	const title = match.params.id.split('-').map(item => item[0].toUpperCase() + item.slice(1)).join(' ');
 
 	const bookItem = booksList.filter(item => item.title.indexOf(title) !== -1);
-	console.log(bookItem[0]);
 	return (
 		<section>
 			<Header />

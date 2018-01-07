@@ -25,7 +25,7 @@
 		"jsx-a11y/anchor-has-content": [0],
 		"react/jsx-indent-props": [0],
 		"react/no-array-index-key": [0],
-		"jsx-a11y/click-events-have-key-events": [0]
-		
+		"jsx-a11y/click-events-have-key-events": [0],
+		"react/no-did-update-set-state": [0]
 	}
 }

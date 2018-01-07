@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const categories = [
 	'Horror', 'Drama', 'Documentary', 'Comedy', 'Crime', 'Mystery',
 	'Romance', 'Adventure', 'Children', 'Thriller', 'Western', 'Fantasy',
-	'Animation', 'Action', 'Musical', 'War', 'Sci-fi', 'Noir',
+	'Animation', 'Action', 'Esoteric', 'War', 'Sci-fi', 'Noir',
 ];
 
 const renderSideList = (category, index) => {
