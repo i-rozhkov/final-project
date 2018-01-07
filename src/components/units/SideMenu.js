@@ -18,7 +18,7 @@ const renderSideList = (category, index) => {
 	);
 };
 
-export default class SubMenu extends React.Component {
+export default class SideMenu extends React.Component {
 	render() {
 		return (
 			<aside>

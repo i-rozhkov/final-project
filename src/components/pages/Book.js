@@ -8,8 +8,7 @@ import Breadcrumbs from '../units/Breadcrumbs';
 const booksList = require('../../../data/users.json');
 
 const Book = ({ match }) => {
-	const title = match.params.id.split('-').map(item => item[0].toUpperCase() + item.slice(1)).join(' ');
-
+	const title = match.params.id.split('-').map(item => item[0].toUpperCase() + item.slice(1))[0];
 	const bookItem = booksList.filter(item => item.title.indexOf(title) !== -1);
 	return (
 		<section>
