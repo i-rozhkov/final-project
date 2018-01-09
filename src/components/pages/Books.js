@@ -4,15 +4,13 @@ import Footer from '../units/Footer';
 import Gallery from '../units/Gallery';
 import Breadcrumbs from '../units/Breadcrumbs';
 
-const booksList = require('../../../data/users.json');
-
 export default class Books extends React.Component {
 	render() {
 		return (
 			<section>
 				<Header />
 				<Breadcrumbs />
-				<Gallery booksList={booksList} />
+				<Gallery />
 				<Footer />
 			</section>
 		);

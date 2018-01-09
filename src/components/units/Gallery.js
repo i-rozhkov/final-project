@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
-// import axios from 'axios';
+import axios from 'axios';
 import Pagination from './Pagination';
 import SideMenu from './SideMenu';
+import Rating from './Rating';
+import Modal from './Modal';
+import SearchField from './SearchField';
 
 const getMainCategory = (category) => {
 	const indexOfDivider = category.indexOf('|');
@@ -17,29 +19,45 @@ export default class Gallery extends React.Component {
 
 		this.state = {
 			loading: true,
-			exampleItems: this.props.booksList,
+			exampleItems: [],
 			pageOfItems: [],
+			isOpen: false,
+			immutable: [],
 		};
 
 		this.handleStateChange = this.handleStateChange.bind(this);
 		this.imagesLoaded = this.imagesLoaded.bind(this);
 		this.onChangePage = this.onChangePage.bind(this);
+		this.toggleModal = this.toggleModal.bind(this);
+		this.addToLibrary = this.addToLibrary.bind(this);
+		this.getStringToFilter = this.getStringToFilter.bind(this);
 	}
 
-	// componentDidMount() {
-	// 	const that = this;
-	// 	axios.get('/books')
-	// 		.then((response) => {
-	// 			that.setState({
-	// 				exampleItems: response.data,
-	// 			});
-	// 		});
-	// }
+	componentDidMount() {
+		const that = this;
+		axios.get('/data/users.json')
+			.then((response) => {
+				that.setState({
+					exampleItems: response.data,
+					immutable: response.data,
+				});
+			});
+	}
 
 	onChangePage(pageOfItems) {
 		// update state with new page of items
 		this.setState({ pageOfItems });
 	}
+
+	getStringToFilter(event) {
+		const stringToFilter = event.target.value;
+		const filteredArray = this.state.immutable.filter(item =>
+			item.title.indexOf(stringToFilter) !== -1);
+		this.setState({
+			exampleItems: filteredArray,
+		});
+	}
+
 
 	handleStateChange() {
 		const galleryElement = this.gallery;
@@ -77,9 +95,42 @@ export default class Gallery extends React.Component {
 						{item.author}
 					</Link>
 				</p>
-				<div className="gallery-item-score">{item.score}</div>
+				<div className="gallery-item-score"><Rating value={(item.score) / 2} size={28} /></div>
 			</div>
 		);
+	}
+
+	toggleModal() {
+		this.setState({
+			isOpen: !this.state.isOpen,
+		});
+	}
+
+	addToLibrary() {
+		const author = document.getElementById('author').value;
+		const title = document.getElementById('title').value;
+		const year = document.getElementById('year').value;
+		const summary = document.getElementById('summary').value;
+		const score = document.getElementById('score').value;
+		const category = document.getElementById('category').value;
+		const image = document.getElementById('image').value;
+
+		const addedToItems = this.state.exampleItems;
+
+		addedToItems.push({
+			id: this.state.exampleItems.length + 1,
+			author,
+			title,
+			year,
+			summary,
+			score,
+			category,
+			image,
+		});
+
+		return this.setState({
+			exampleItems: addedToItems,
+		});
 	}
 
 	renderSpinner() {
@@ -98,18 +149,23 @@ export default class Gallery extends React.Component {
 			<div className="gallery" ref={(c) => { this.gallery = c; }}>
 				<SideMenu />
 				<div className="images">
+					<SearchField getStringToFilter={this.getStringToFilter} />
 					{this.renderSpinner()}
 					{this.state.pageOfItems.map(item => this.showImage(item))}
+					<button className="add-book" onClick={this.toggleModal}>Add to Library</button>
 					<Pagination
 						items={this.state.exampleItems}
 						onChangePage={this.onChangePage}
 					/>
+					<Modal
+						show={this.state.isOpen}
+						onClose={this.toggleModal}
+						toAdd={this.addToLibrary}
+					>
+						Some content for the modal
+					</Modal>
 				</div>
 			</div>
 		);
 	}
 }
-
-Gallery.propTypes = {
-	booksList: PropTypes.arrayOf(PropTypes.object).isRequired,
-};

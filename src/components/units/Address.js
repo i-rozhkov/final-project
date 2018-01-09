@@ -4,7 +4,7 @@ export default class Address extends React.Component {
 	render() {
 		return (
 			<section className="address-table">
-				<h2>Online Library <span className="site-name">ForestLib</span></h2>
+				<h2>Online Library</h2>
 				<p>Founded in 2007</p>
 				<div className="thead">
 					<div className="address">Address</div>

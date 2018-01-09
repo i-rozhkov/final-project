@@ -14,7 +14,7 @@ export default class Profile extends React.Component {
 						<p className="book-title">{this.props.book.title}</p>
 						<p className="book-author">by {this.props.book.author}</p>
 						<p className="book-summary">{this.props.book.summary}</p>
-						<div className="book-score"><Rating rating={Math.ceil(this.props.book.score / 2)} /></div>
+						<div className="book-score"><Rating value={(this.props.book.score) / 2} /></div>
 						<button className="read-button">Read</button>
 					</div>
 				</div>

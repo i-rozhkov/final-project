@@ -39,8 +39,8 @@
   
 .slider-right-arrow {
 	position: absolute;
-	top: 50%;
-	right: 25px;
+	top: 125px;
+	right: 45px;
 	z-index: 999;
 	color: #fff;
 } 
@@ -55,8 +55,8 @@
 
 .slider-left-arrow {
 	position: absolute;
-	top: 50%;
-	left: 25px;
+	top: 125px;
+	left: 45px;
 	z-index: 999;
 	color: #fff;
 }
@@ -75,7 +75,7 @@
 	width: 100%;
 	text-align: center;
 	z-index: 9999;
-	padding: 5px 0;
+	padding: 5px 0 10px;
 }
 
 .dot {

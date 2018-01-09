@@ -10,6 +10,7 @@
 .images {
 	display: flex;
 	justify-content: space-around;
+	align-items: center;
 	flex-wrap: wrap;
 	height: 702px;
 	overflow-y: auto;
@@ -69,4 +70,78 @@
 
 .loader {
 	position: absolute;
+}
+
+.add-book {
+	width: 300px;
+	height: 40px;
+	cursor: pointer;
+	outline-color: #aaa;
+	background-color: rgb(156, 184, 31);
+	border: none;
+	border-radius: 5px;
+	transition: background-color .25s ease,
+				color .25s ease;
+	font-family: 'Bubblegum Sans', cursive;
+	font-size: 20px;
+	letter-spacing: 1px;
+}
+
+.add-book:hover {
+	background-color: rgb(17, 121, 153);
+	color: #ddd;
+}
+
+.backdrop {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: rgba(0, 0, 0, 0.3);
+	padding: 50px;
+	z-index: 2;
+}
+
+.modal {
+	border-radius: 10px;
+	margin: 2% auto;
+	padding: 30px;
+	width: 300px;
+	text-align: center;
+	font-family: 'Bubblegum Sans', cursive;
+	background-color: rgba(177, 62, 187, 0.9);
+	color: #fff;
+}
+
+.modal-form input, .modal-form textarea {
+	font-family: 'Bubblegum Sans', cursive;
+	border: none;
+	outline-color: #555;
+	padding: 5px;
+}
+
+.modal-form p {
+	margin: 0;
+	padding: 5px 0;
+	width: 300px;
+}
+
+.close, .add {
+	margin: 20px 20px 0;
+	cursor: pointer;
+	width: 100px;
+	height: 30px;
+	outline-color: #aaa;
+	background-color: rgb(156, 184, 31);
+	border: none;
+	border-radius: 5px;
+	transition: background-color .25s ease,
+				color .25s ease;
+	font-family: 'Bubblegum Sans', cursive;
+}
+
+.close:hover, .add:hover {
+	background-color: rgb(17, 121, 153);
+	color: #ddd;
 }

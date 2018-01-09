@@ -5,11 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run build && npm run server",
-    "start:dev": "npm run build && npm run server:dev",
     "server": "node ./server/server.js",
     "server:dev": "nodemon ./server/server.js",
     "build": "rimraf dist && webpack",
-    "build:dev": "rimraf dist && webpack -w --watch-aggregate-timeout 100ms",
     "wds": "webpack-dev-server"
   },
   "author": "Ivan Rozhkov <gather.all@bk.ru>",
