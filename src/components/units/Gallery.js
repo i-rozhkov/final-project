@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 import Pagination from './Pagination';
 import SideMenu from './SideMenu';
 import Rating from './Rating';
 import Modal from './Modal';
-import SearchField from './SearchField';
 
 const getMainCategory = (category) => {
 	const indexOfDivider = category.indexOf('|');
@@ -30,34 +30,41 @@ export default class Gallery extends React.Component {
 		this.onChangePage = this.onChangePage.bind(this);
 		this.toggleModal = this.toggleModal.bind(this);
 		this.addToLibrary = this.addToLibrary.bind(this);
-		this.getStringToFilter = this.getStringToFilter.bind(this);
+		this.renderAddButton = this.renderAddButton.bind(this);
 	}
 
 	componentDidMount() {
 		const that = this;
-		axios.get('/data/users.json')
-			.then((response) => {
-				that.setState({
-					exampleItems: response.data,
-					immutable: response.data,
+		if (this.props.booksList.length === 0) {
+			axios.get('/data/users.json')
+				.then((response) => {
+					that.setState({
+						exampleItems: response.data,
+						immutable: response.data,
+					});
 				});
+		} else {
+			that.setState({
+				exampleItems: this.props.booksList,
+				immutable: this.props.booksList,
 			});
+		}
+	}
+
+	componentWillReceiveProps(nextProps) {
+		if (nextProps.toFilter !== this.props.toFilter) {
+			const filteredArray = this.state.immutable.filter(item =>
+				item.title.indexOf(nextProps.toFilter) !== -1);
+			this.setState({
+				exampleItems: filteredArray,
+			});
+		}
 	}
 
 	onChangePage(pageOfItems) {
 		// update state with new page of items
 		this.setState({ pageOfItems });
 	}
-
-	getStringToFilter(event) {
-		const stringToFilter = event.target.value;
-		const filteredArray = this.state.immutable.filter(item =>
-			item.title.indexOf(stringToFilter) !== -1);
-		this.setState({
-			exampleItems: filteredArray,
-		});
-	}
-
 
 	handleStateChange() {
 		const galleryElement = this.gallery;
@@ -143,16 +150,21 @@ export default class Gallery extends React.Component {
 		);
 	}
 
+	renderAddButton() {
+		if (this.props.showAddButton) {
+			return <button className="add-book" onClick={this.toggleModal}>Add to Library</button>;
+		}
+		return undefined;
+	}
 
 	render() {
 		return (
 			<div className="gallery" ref={(c) => { this.gallery = c; }}>
 				<SideMenu />
 				<div className="images">
-					<SearchField getStringToFilter={this.getStringToFilter} />
 					{this.renderSpinner()}
 					{this.state.pageOfItems.map(item => this.showImage(item))}
-					<button className="add-book" onClick={this.toggleModal}>Add to Library</button>
+					{this.renderAddButton()}
 					<Pagination
 						items={this.state.exampleItems}
 						onChangePage={this.onChangePage}
@@ -169,3 +181,14 @@ export default class Gallery extends React.Component {
 		);
 	}
 }
+
+Gallery.propTypes = {
+	booksList: PropTypes.arrayOf(PropTypes.object),
+	showAddButton: PropTypes.bool,
+	toFilter: PropTypes.string.isRequired,
+};
+
+Gallery.defaultProps = {
+	booksList: [],
+	showAddButton: true,
+};

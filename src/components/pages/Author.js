@@ -15,7 +15,7 @@ const Author = ({ match }) => {
 		<section>
 			<Header />
 			<Breadcrumbs />
-			<Gallery booksList={categorized} />
+			<Gallery booksList={categorized} showAddButton={false} />
 			<Footer />
 		</section>
 	);

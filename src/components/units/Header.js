@@ -1,7 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import SignUp from './SignUp';
 import Nav from './Nav';
 import Logo from './Logo';
+import SearchField from './SearchField';
 
 export default class Header extends React.Component {
 	render() {
@@ -12,6 +14,8 @@ export default class Header extends React.Component {
 
 				<Nav />
 
+				<SearchField getStringToFilter={this.props.getStringToFilter} />
+
 				<SignUp />
 
 			</header>
@@ -19,3 +23,6 @@ export default class Header extends React.Component {
 	}
 }
 
+Header.propTypes = {
+	getStringToFilter: PropTypes.func.isRequired,
+};

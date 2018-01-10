@@ -5,12 +5,29 @@ import Gallery from '../units/Gallery';
 import Breadcrumbs from '../units/Breadcrumbs';
 
 export default class Books extends React.Component {
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			toFilter: '',
+		};
+
+		this.getStringToFilter = this.getStringToFilter.bind(this);
+	}
+
+	getStringToFilter(event) {
+		const stringToFilter = event.target.value;
+		this.setState({
+			toFilter: stringToFilter,
+		});
+	}
+
 	render() {
 		return (
 			<section>
-				<Header />
+				<Header getStringToFilter={this.getStringToFilter} />
 				<Breadcrumbs />
-				<Gallery />
+				<Gallery toFilter={this.state.toFilter} />
 				<Footer />
 			</section>
 		);

@@ -68,11 +68,17 @@
 	color: rgb(92, 163, 44);
 }
 
+.gallery-item-score .rating {
+	width: 120px;
+	margin: 0 auto;
+}
+
 .loader {
 	position: absolute;
 }
 
 .add-book {
+	margin: 20px;
 	width: 300px;
 	height: 40px;
 	cursor: pointer;
