@@ -15,24 +15,7 @@
 	background-color: rgb(235, 254, 255);
 	width: 75%;
 	padding: 10px;
-	height: 350px;
-}
-
-.breadcrumb-list {
-	background-color: rgb(252, 215, 255);
-	display: flex;
-	margin: 20px 60px;
-}
-
-.breadcrumb-item a {
-	text-decoration: none;
-	color: rgb(125, 34, 148);
-	font-size: 20px;
-}
-
-.breadcrumb-item:not(:first-child):before {
-	content: '/';
-	margin: 0 10px;
+	height: 360px;
 }
 
 .book-profile:not(:first-child) {
@@ -57,6 +40,7 @@
 }
 
 .book-description {
+	width: 550px;
 	position: relative;
 	margin: 0 20px;
 }
@@ -77,12 +61,12 @@
 	font-size: 14px;
 	background-color: rgba(255, 134, 235, 0.37);
 	width: 25%;
-	height: 370px;
+	height: 380px;
 }
 
 .extra-paragraph {
 	text-align: center;
-	margin: 5px 0;
+	margin: 7px 0;
 	font-size: 20px;
 }
 
@@ -100,6 +84,9 @@
 .extra-cover {
 	margin-left: 18px;
 	margin-right: 10px;
+}
+
+.extra-cover img {
 	width: 80px;
 	height: 100px;
 }
@@ -112,6 +99,11 @@
 	margin-top: 0;
 	font-family: 'Fredericka the Great', cursive;
 	font-size: 16px;
+	height: 20px;
+	width: 180px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
 }
 
 .extra-author {

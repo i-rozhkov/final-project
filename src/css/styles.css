@@ -208,3 +208,28 @@ footer article .site-name {
 	color: #000;
 	opacity: .8;
 }
+
+.author .images {
+	align-items: flex-start;
+	justify-content: flex-start;
+	padding-left: 30px;
+}
+
+.breadcrumb-list {
+	background-color: rgb(252, 215, 255);
+	display: flex;
+	margin: 20px 60px;
+	padding-left: 15px;
+	padding-top: 5px;
+}
+
+.breadcrumb-item a {
+	text-decoration: none;
+	color: rgb(125, 34, 148);
+	font-size: 20px;
+}
+
+.breadcrumb-item:not(:first-child):before {
+	content: '/';
+	margin: 0 10px;
+}

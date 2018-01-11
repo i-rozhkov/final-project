@@ -24,32 +24,47 @@ export default class Profile extends React.Component {
 						<ul className="extra-list">
 							<li className="extra-item">
 								<div className="extra-cover">
-									<img src="https://picsum.photos/80/100" alt="extra book" />
+									<img src={this.props.extraBooks[0].image} alt="extra book" />
 								</div>
 								<div className="extra-description">
-									<p className="extra-title">Extra title</p>
-									<p className="extra-author">by Extra author</p>
-									<div className="extra-score">Extra score</div>
+									<p className="extra-title">{this.props.extraBooks[0].title}</p>
+									<p className="extra-author">by {this.props.extraBooks[0].author}</p>
+									<div className="extra-score">
+										<Rating
+											size={24}
+											value={this.props.extraBooks[0].score / 2}
+										/>
+									</div>
 								</div>
 							</li>
 							<li className="extra-item">
 								<div className="extra-cover">
-									<img src="https://picsum.photos/75/95" alt="extra book" />
+									<img src={this.props.extraBooks[1].image} alt="extra book" />
 								</div>
 								<div className="extra-description">
-									<p className="extra-title">Extra title</p>
-									<p className="extra-author">by Extra author</p>
-									<div className="extra-score">Extra score</div>
+									<p className="extra-title">{this.props.extraBooks[1].title}</p>
+									<p className="extra-author">by {this.props.extraBooks[1].author}</p>
+									<div className="extra-score">
+										<Rating
+											size={24}
+											value={this.props.extraBooks[1].score / 2}
+										/>
+									</div>
 								</div>
 							</li>
 							<li className="extra-item">
 								<div className="extra-cover">
-									<img src="https://picsum.photos/70/90" alt="extra book" />
+									<img src={this.props.extraBooks[2].image} alt="extra book" />
 								</div>
 								<div className="extra-description">
-									<p className="extra-title">Extra title</p>
-									<p className="extra-author">by Extra author</p>
-									<div className="extra-score">Extra score</div>
+									<p className="extra-title">{this.props.extraBooks[2].title}</p>
+									<p className="extra-author">by {this.props.extraBooks[2].author}</p>
+									<div className="extra-score">
+										<Rating
+											size={24}
+											value={this.props.extraBooks[2].score / 2}
+										/>
+									</div>
 								</div>
 							</li>
 						</ul>
@@ -62,4 +77,5 @@ export default class Profile extends React.Component {
 
 Profile.propTypes = {
 	book: PropTypes.objectOf(PropTypes.any).isRequired,
+	extraBooks: PropTypes.arrayOf(PropTypes.object).isRequired,
 };

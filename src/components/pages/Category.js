@@ -5,7 +5,7 @@ import Footer from '../units/Footer';
 import Gallery from '../units/Gallery';
 import Breadcrumbs from '../units/Breadcrumbs';
 
-const booksList = require('../../../data/users.json');
+const booksList = require('../../../data/books.json');
 
 const Category = ({ match }) => {
 	const categoryName = match.params.categoryName[0].toUpperCase() +

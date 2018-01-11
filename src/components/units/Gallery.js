@@ -36,7 +36,7 @@ export default class Gallery extends React.Component {
 	componentDidMount() {
 		const that = this;
 		if (this.props.booksList.length === 0) {
-			axios.get('/data/users.json')
+			axios.get('/data/books.json')
 				.then((response) => {
 					that.setState({
 						exampleItems: response.data,
@@ -98,7 +98,7 @@ export default class Gallery extends React.Component {
 					</Link>
 				</p>
 				<p className="gallery-item-author">
-					<Link to={`/author/${item.author.toLowerCase().replace(' ', '-')}`}>
+					<Link to={`/${item.author.toLowerCase().replace(' ', '-')}`}>
 						{item.author}
 					</Link>
 				</p>

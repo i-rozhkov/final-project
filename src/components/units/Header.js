@@ -24,5 +24,9 @@ export default class Header extends React.Component {
 }
 
 Header.propTypes = {
-	getStringToFilter: PropTypes.func.isRequired,
+	getStringToFilter: PropTypes.func,
+};
+
+Header.defaultProps = {
+	getStringToFilter: () => {},
 };

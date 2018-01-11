@@ -23,11 +23,11 @@ ReactDOM.render(
 				<Route exact path="/" component={Home} />
 				<Route path="/category/:categoryName/:id" component={Book} />
 				<Route path="/category/:categoryName" component={Category} />
-				<Route path="/author/:authorName" component={Author} />
 				<Route path="/contacts" component={Contacts} />
 				<Route path="/books/:id" component={SubMenuItem} />
 				<Route path="/books" component={Books} />
-				<Route path="/audios/:id" component={Book} />
+				<Route path="/audios" component={Books} />
+				<Route path="/:authorName" component={Author} />
 				<Route component={NotFound} />
 			</Switch>
 		</BrowserRouter>
