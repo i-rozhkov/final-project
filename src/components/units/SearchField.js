@@ -8,12 +8,12 @@ export default class SearchField extends React.Component {
 				className="searchField"
 				type="search"
 				placeholder="Search for book or author"
-				onChange={this.props.getStringToFilter}
+				onChange={this.props.filterBySearch}
 			/>
 		);
 	}
 }
 
 SearchField.propTypes = {
-	getStringToFilter: PropTypes.func.isRequired,
+	filterBySearch: PropTypes.func.isRequired,
 };

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import PropTypes from 'prop-types';
 import Pagination from './Pagination';
 import SideMenu from './SideMenu';
@@ -19,10 +18,9 @@ export default class Gallery extends React.Component {
 
 		this.state = {
 			loading: true,
-			exampleItems: [],
+			exampleItems: this.props.booksList,
 			pageOfItems: [],
 			isOpen: false,
-			immutable: [],
 		};
 
 		this.handleStateChange = this.handleStateChange.bind(this);
@@ -33,30 +31,10 @@ export default class Gallery extends React.Component {
 		this.renderAddButton = this.renderAddButton.bind(this);
 	}
 
-	componentDidMount() {
-		const that = this;
-		if (this.props.booksList.length === 0) {
-			axios.get('/data/books.json')
-				.then((response) => {
-					that.setState({
-						exampleItems: response.data,
-						immutable: response.data,
-					});
-				});
-		} else {
-			that.setState({
-				exampleItems: this.props.booksList,
-				immutable: this.props.booksList,
-			});
-		}
-	}
-
 	componentWillReceiveProps(nextProps) {
-		if (nextProps.toFilter !== this.props.toFilter) {
-			const filteredArray = this.state.immutable.filter(item =>
-				item.title.indexOf(nextProps.toFilter) !== -1);
+		if (this.props.booksList !== nextProps.booksList) {
 			this.setState({
-				exampleItems: filteredArray,
+				exampleItems: nextProps.booksList,
 			});
 		}
 	}
@@ -160,7 +138,7 @@ export default class Gallery extends React.Component {
 	render() {
 		return (
 			<div className="gallery" ref={(c) => { this.gallery = c; }}>
-				<SideMenu />
+				<SideMenu changeCategory={this.props.changeCategory} />
 				<div className="images">
 					{this.renderSpinner()}
 					{this.state.pageOfItems.map(item => this.showImage(item))}
@@ -185,10 +163,11 @@ export default class Gallery extends React.Component {
 Gallery.propTypes = {
 	booksList: PropTypes.arrayOf(PropTypes.object),
 	showAddButton: PropTypes.bool,
-	toFilter: PropTypes.string.isRequired,
+	changeCategory: PropTypes.func,
 };
 
 Gallery.defaultProps = {
 	booksList: [],
 	showAddButton: true,
+	changeCategory: () => {},
 };

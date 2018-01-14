@@ -10,7 +10,7 @@
 .images {
 	display: flex;
 	justify-content: space-around;
-	align-items: center;
+	align-items: flex-start;
 	flex-wrap: wrap;
 	height: 702px;
 	overflow-y: auto;
@@ -78,7 +78,7 @@
 }
 
 .add-book {
-	margin: 20px;
+	margin: 15px;
 	width: 300px;
 	height: 40px;
 	cursor: pointer;

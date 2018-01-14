@@ -26,7 +26,8 @@ ReactDOM.render(
 				<Route path="/contacts" component={Contacts} />
 				<Route path="/books/:id" component={SubMenuItem} />
 				<Route path="/books" component={Books} />
-				<Route path="/audios" component={Books} />
+				<Route path="/audio/:id" component={SubMenuItem} />
+				<Route path="/audio" component={Books} />
 				<Route path="/:authorName" component={Author} />
 				<Route component={NotFound} />
 			</Switch>
