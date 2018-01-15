@@ -71,7 +71,7 @@ export default class SubMenuItem extends React.Component {
 
 	filterBooksById(id, resp) {
 		let filteredBooks;
-		const arrayToFilter = resp || this.state.immutable;
+		const arrayToFilter = resp;
 		switch (id) {
 		case 'popular':
 			filteredBooks = arrayToFilter.filter(item => item.score > 5);
@@ -83,6 +83,7 @@ export default class SubMenuItem extends React.Component {
 			filteredBooks = arrayToFilter.filter(item => item.score > 8);
 			break;
 		default:
+			filteredBooks = arrayToFilter.filter(item => item.title.indexOf(id) !== -1);
 			break;
 		}
 

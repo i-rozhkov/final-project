@@ -24,3 +24,11 @@
 	padding: 6px 11px;
 	border: none;
 }
+
+.pagination .active a {
+	background-color: rgb(175, 0, 161);
+	background-color: rgba(175, 0, 161, .4);
+	color: #fff;
+	padding: 6px 11px;
+	border: none;
+}

@@ -35,7 +35,6 @@ export default class Books extends React.Component {
 	componentDidUpdate(prevProps, prevState) {
 		if (this.state.type !== prevState.type) {
 			const that = this;
-			console.log(this.state.type);
 			axios.get(`/data/${this.state.type}.json`)
 				.then((response) => {
 					that.setState({
@@ -54,7 +53,7 @@ export default class Books extends React.Component {
 	sortBooks() {
 		const sel = document.getElementById('sortingSelect');
 		const { value } = sel.options[sel.selectedIndex];
-		const arrayToSort = this.state.immutable.slice();
+		const arrayToSort = this.state.booksList.slice();
 		const sortedArray = arrayToSort.sort((a, b) => (a[value] > b[value] ? 1 : -1));
 		this.setState({
 			booksList: sortedArray,
@@ -63,7 +62,8 @@ export default class Books extends React.Component {
 
 	filterBySearch(event) {
 		const stringToFilter = event.target.value;
-		const filteredArray = this.state.immutable.filter(item =>
+		const arrayToFilter = this.state.immutable.slice();
+		const filteredArray = arrayToFilter.filter(item =>
 			item.title.indexOf(stringToFilter) !== -1);
 		this.setState({
 			booksList: filteredArray,
