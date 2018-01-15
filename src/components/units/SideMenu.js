@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 export default class SideMenu extends React.Component {
@@ -21,7 +20,7 @@ export default class SideMenu extends React.Component {
 		const categoryToLow = category.toLowerCase();
 		return (
 			<li key={index} className="side-menu-item">
-				<Link to={`/category/${categoryToLow}`} onClick={this.props.changeCategory}>
+				<Link to={`/category/${categoryToLow}`}>
 					{category}
 				</Link>
 			</li>
@@ -40,7 +39,3 @@ export default class SideMenu extends React.Component {
 		);
 	}
 }
-
-SideMenu.propTypes = {
-	changeCategory: PropTypes.func.isRequired,
-};

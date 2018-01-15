@@ -33,7 +33,7 @@ function getHalfStarStyles(color, uniqueness) {
 	}`;
 }
 
-class Rating extends Component {
+export default class Rating extends Component {
 	constructor(props) {
 		super(props);
 		// set defaults
@@ -251,5 +251,3 @@ Rating.defaultProps = {
 	color1: 'gray',
 	color2: '#ffd700',
 };
-
-export default Rating;

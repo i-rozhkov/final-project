@@ -21,6 +21,7 @@ export default class SubMenuItem extends React.Component {
 		this.changeId = this.changeId.bind(this);
 		this.filterBooksById = this.filterBooksById.bind(this);
 		this.filterBySearch = this.filterBySearch.bind(this);
+		this.sortBooks = this.sortBooks.bind(this);
 	}
 
 	componentWillMount() {
@@ -44,7 +45,6 @@ export default class SubMenuItem extends React.Component {
 			const that = this;
 			axios.get(`/data/${this.state.type}.json`)
 				.then((response) => {
-					console.log(response.data.map(item => item.score).sort());
 					const { id } = this.props.match.params;
 					const filteredBooks = this.filterBooksById(id, response.data);
 					that.setState({
@@ -52,6 +52,11 @@ export default class SubMenuItem extends React.Component {
 						immutable: filteredBooks,
 					});
 				});
+		}
+
+		if (this.props.match !== prevProps.match) {
+			const sel = document.getElementById('sortingSelect');
+			sel.options[0].selected = true;
 		}
 	}
 
@@ -84,6 +89,16 @@ export default class SubMenuItem extends React.Component {
 		return filteredBooks;
 	}
 
+	sortBooks() {
+		const sel = document.getElementById('sortingSelect');
+		const { value } = sel.options[sel.selectedIndex];
+		const arrayToSort = this.state.immutable.slice();
+		const sortedArray = arrayToSort.sort((a, b) => (a[value] > b[value] ? 1 : -1));
+		this.setState({
+			booksList: sortedArray,
+		});
+	}
+
 	changeId(event) {
 		const newId = event.target.href.slice(28);
 		const filteredBooks = this.filterBooksById(newId, this.state.immutable);
@@ -109,7 +124,7 @@ export default class SubMenuItem extends React.Component {
 					pickType={this.pickType}
 				/>
 				<Breadcrumbs />
-				<Gallery booksList={this.state.booksList} />
+				<Gallery booksList={this.state.booksList} sortBooks={this.sortBooks} />
 				<Footer />
 			</section>
 		);

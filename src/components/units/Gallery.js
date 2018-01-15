@@ -5,11 +5,19 @@ import Pagination from './Pagination';
 import SideMenu from './SideMenu';
 import Rating from './Rating';
 import Modal from './Modal';
+import Sort from './Sort';
 
 const getMainCategory = (category) => {
 	const indexOfDivider = category.indexOf('|');
 	const mainCategory = indexOfDivider === -1 ? category : category.slice(0, indexOfDivider);
 	return mainCategory.toLowerCase();
+};
+
+const getGalleryTitle = () => {
+	let path = window.location.pathname.slice(window.location.pathname.indexOf('/', 2) + 1);
+	path = path.replace('/', '');
+	path = path[0].toUpperCase() + path.slice(1);
+	return path;
 };
 
 export default class Gallery extends React.Component {
@@ -18,7 +26,7 @@ export default class Gallery extends React.Component {
 
 		this.state = {
 			loading: true,
-			exampleItems: this.props.booksList,
+			exampleItems: [],
 			pageOfItems: [],
 			isOpen: false,
 		};
@@ -138,8 +146,10 @@ export default class Gallery extends React.Component {
 	render() {
 		return (
 			<div className="gallery" ref={(c) => { this.gallery = c; }}>
-				<SideMenu changeCategory={this.props.changeCategory} />
+				<SideMenu />
 				<div className="images">
+					<p className="gallery-title">{getGalleryTitle()}</p>
+					<Sort sortBooks={this.props.sortBooks} />
 					{this.renderSpinner()}
 					{this.state.pageOfItems.map(item => this.showImage(item))}
 					{this.renderAddButton()}
@@ -163,11 +173,10 @@ export default class Gallery extends React.Component {
 Gallery.propTypes = {
 	booksList: PropTypes.arrayOf(PropTypes.object),
 	showAddButton: PropTypes.bool,
-	changeCategory: PropTypes.func,
+	sortBooks: PropTypes.func.isRequired,
 };
 
 Gallery.defaultProps = {
 	booksList: [],
 	showAddButton: true,
-	changeCategory: () => {},
 };

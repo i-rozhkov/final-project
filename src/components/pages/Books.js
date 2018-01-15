@@ -17,6 +17,7 @@ export default class Books extends React.Component {
 
 		this.filterBySearch = this.filterBySearch.bind(this);
 		this.pickType = this.pickType.bind(this);
+		this.sortBooks = this.sortBooks.bind(this);
 	}
 
 	componentWillMount() {
@@ -43,6 +44,21 @@ export default class Books extends React.Component {
 					});
 				});
 		}
+
+		if (this.state.booksList.indexOf(prevState.booksList[0]) === -1) {
+			const sel = document.getElementById('sortingSelect');
+			sel.options[0].selected = true;
+		}
+	}
+
+	sortBooks() {
+		const sel = document.getElementById('sortingSelect');
+		const { value } = sel.options[sel.selectedIndex];
+		const arrayToSort = this.state.immutable.slice();
+		const sortedArray = arrayToSort.sort((a, b) => (a[value] > b[value] ? 1 : -1));
+		this.setState({
+			booksList: sortedArray,
+		});
 	}
 
 	filterBySearch(event) {
@@ -66,7 +82,7 @@ export default class Books extends React.Component {
 			<section>
 				<Header filterBySearch={this.filterBySearch} pickType={this.pickType} />
 				<Breadcrumbs />
-				<Gallery booksList={this.state.booksList} />
+				<Gallery booksList={this.state.booksList} sortBooks={this.sortBooks} />
 				<Footer />
 			</section>
 		);

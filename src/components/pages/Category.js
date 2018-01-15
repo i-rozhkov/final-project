@@ -14,9 +14,9 @@ export default class Category extends React.Component {
 			immutable: [],
 		};
 
-		this.changeCategory = this.changeCategory.bind(this);
 		this.filterByCategory = this.filterByCategory.bind(this);
 		this.filterBySearch = this.filterBySearch.bind(this);
+		this.sortBooks = this.sortBooks.bind(this);
 	}
 
 	componentWillMount() {
@@ -33,40 +33,29 @@ export default class Category extends React.Component {
 			});
 	}
 
-	// componentDidUpdate(prevProps, prevState) {
-	// 	if (this.state.category !== prevState.category) {
-	// 		const that = this;
-	// 		const type = window.location.pathname.indexOf('books') === -1 ? 'audio' : 'books';
-	// 		axios.get(`/data/${type}.json`)
-	// 			.then((response) => {
-	// 				let { categoryName } = this.props.match.params;
-	// 				categoryName = categoryName[0].toUpperCase() + categoryName.slice(1);
-	// 				const categorized = this.filterByCategory(categoryName, response.data);
-	// 				that.setState({
-	// 					booksList: categorized,
-	// 					immutable: categorized,
-	// 				});
-	// 			});
-	// 	}
-	// }
+	componentDidUpdate(prevProps) {
+		if (this.props.match !== prevProps.match) {
+			const sel = document.getElementById('sortingSelect');
+			sel.options[0].selected = true;
+			const that = this;
+			axios.get('/data/books.json')
+				.then((response) => {
+					let { categoryName } = this.props.match.params;
+					categoryName = categoryName[0].toUpperCase() + categoryName.slice(1);
+					const categorized = this.filterByCategory(categoryName, response.data);
+					that.setState({
+						booksList: categorized,
+						immutable: categorized,
+					});
+				});
+		}
+	}
 
 	filterByCategory(category, array) {
-		const arrayToFilter = array || this.state.immutable;
+		const arrayToFilter = array;
 		const categorized = arrayToFilter.filter(item =>
 			item.category.indexOf(category) !== -1);
 		return categorized;
-	}
-
-	changeCategory(event) {
-		let pickedCategory = event.target.href.slice(event.target.href.indexOf('category') + 9);
-
-		pickedCategory = pickedCategory[0].toUpperCase() + pickedCategory.slice(1);
-
-		const categorized = this.filterByCategory(pickedCategory);
-
-		this.setState({
-			booksList: categorized,
-		});
 	}
 
 	filterBySearch(event) {
@@ -78,15 +67,25 @@ export default class Category extends React.Component {
 		});
 	}
 
+	sortBooks() {
+		const sel = document.getElementById('sortingSelect');
+		const { value } = sel.options[sel.selectedIndex];
+		const arrayToSort = this.state.immutable.slice();
+		const sortedArray = arrayToSort.sort((a, b) => (a[value] > b[value] ? 1 : -1));
+		this.setState({
+			booksList: sortedArray,
+		});
+	}
+
 	render() {
 		return (
 			<section>
 				<Header filterBySearch={this.filterBySearch} />
 				<Breadcrumbs />
 				<Gallery
+					sortBooks={this.sortBooks}
 					showAddButton={false}
 					booksList={this.state.booksList}
-					changeCategory={this.changeCategory}
 				/>
 				<Footer />
 			</section>
