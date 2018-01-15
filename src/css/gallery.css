@@ -45,7 +45,8 @@
 }
 
 .gallery-item {
-	width: 300px;
+	width: 302px;
+	height: 420px;
 }
 
 .gallery-item-title, .gallery-item-author {

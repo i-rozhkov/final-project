@@ -14,8 +14,10 @@ export default class SubMenuItem extends React.Component {
 			booksList: [],
 			immutable: [],
 			type: '',
+			id: '',
 		};
 
+		this.pickType = this.pickType.bind(this);
 		this.changeId = this.changeId.bind(this);
 		this.filterBooksById = this.filterBooksById.bind(this);
 		this.filterBySearch = this.filterBySearch.bind(this);
@@ -23,28 +25,31 @@ export default class SubMenuItem extends React.Component {
 
 	componentWillMount() {
 		const that = this;
-		const type = this.props.match.path.slice(1, 6);
+		const type = window.location.pathname.indexOf('books') === -1 ? 'audio' : 'books';
 		axios.get(`/data/${type}.json`)
 			.then((response) => {
 				const { id } = this.props.match.params;
 				const filteredBooks = this.filterBooksById(id, response.data);
 				that.setState({
 					booksList: filteredBooks,
-					immutable: response.data,
+					immutable: filteredBooks,
 					type,
+					id: '',
 				});
 			});
 	}
 
-	componentWillUpdate(nextProps, nextState) {
-		const that = this;
-		if (this.state.type !== nextState.type) {
-			axios.get(`/data/${nextState.type}.json`)
+	componentDidUpdate(prevProps, prevState) {
+		if ((this.state.type !== prevState.type) || (this.state.id !== prevState.id)) {
+			const that = this;
+			axios.get(`/data/${this.state.type}.json`)
 				.then((response) => {
+					console.log(response.data.map(item => item.score).sort());
+					const { id } = this.props.match.params;
+					const filteredBooks = this.filterBooksById(id, response.data);
 					that.setState({
-						booksList: response.data,
-						immutable: response.data,
-						type: nextState.type,
+						booksList: filteredBooks,
+						immutable: filteredBooks,
 					});
 				});
 		}
@@ -84,11 +89,12 @@ export default class SubMenuItem extends React.Component {
 		const filteredBooks = this.filterBooksById(newId, this.state.immutable);
 		this.setState({
 			booksList: filteredBooks,
+			id: newId,
 		});
 	}
 
 	pickType(event) {
-		const type = event.target.href.slice(-5);
+		const type = event.target.href.indexOf('books') === -1 ? 'audio' : 'books';
 		this.setState({
 			type,
 		});

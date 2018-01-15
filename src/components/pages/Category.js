@@ -28,10 +28,27 @@ export default class Category extends React.Component {
 				const categorized = this.filterByCategory(categoryName, response.data);
 				that.setState({
 					booksList: categorized,
-					immutable: response.data,
+					immutable: categorized,
 				});
 			});
 	}
+
+	// componentDidUpdate(prevProps, prevState) {
+	// 	if (this.state.category !== prevState.category) {
+	// 		const that = this;
+	// 		const type = window.location.pathname.indexOf('books') === -1 ? 'audio' : 'books';
+	// 		axios.get(`/data/${type}.json`)
+	// 			.then((response) => {
+	// 				let { categoryName } = this.props.match.params;
+	// 				categoryName = categoryName[0].toUpperCase() + categoryName.slice(1);
+	// 				const categorized = this.filterByCategory(categoryName, response.data);
+	// 				that.setState({
+	// 					booksList: categorized,
+	// 					immutable: categorized,
+	// 				});
+	// 			});
+	// 	}
+	// }
 
 	filterByCategory(category, array) {
 		const arrayToFilter = array || this.state.immutable;
@@ -42,6 +59,7 @@ export default class Category extends React.Component {
 
 	changeCategory(event) {
 		let pickedCategory = event.target.href.slice(event.target.href.indexOf('category') + 9);
+
 		pickedCategory = pickedCategory[0].toUpperCase() + pickedCategory.slice(1);
 
 		const categorized = this.filterByCategory(pickedCategory);
@@ -65,7 +83,11 @@ export default class Category extends React.Component {
 			<section>
 				<Header filterBySearch={this.filterBySearch} />
 				<Breadcrumbs />
-				<Gallery booksList={this.state.booksList} changeCategory={this.changeCategory} />
+				<Gallery
+					showAddButton={false}
+					booksList={this.state.booksList}
+					changeCategory={this.changeCategory}
+				/>
 				<Footer />
 			</section>
 		);

@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import PropTypes from 'prop-types';
 import Header from '../units/Header';
 import Footer from '../units/Footer';
 import Gallery from '../units/Gallery';
@@ -22,21 +21,21 @@ export default class Books extends React.Component {
 
 	componentWillMount() {
 		const that = this;
-		const type = this.props.match.path.slice(1);
+		const type = window.location.pathname.indexOf('books') === -1 ? 'audio' : 'books';
 		axios.get(`/data/${type}.json`)
 			.then((response) => {
 				that.setState({
 					booksList: response.data,
 					immutable: response.data,
-					type,
 				});
 			});
 	}
 
-	componentWillUpdate(nextProps, nextState) {
-		const that = this;
-		if (this.state.type !== nextState.type) {
-			axios.get(`/data/${nextState.type}.json`)
+	componentDidUpdate(prevProps, prevState) {
+		if (this.state.type !== prevState.type) {
+			const that = this;
+			console.log(this.state.type);
+			axios.get(`/data/${this.state.type}.json`)
 				.then((response) => {
 					that.setState({
 						booksList: response.data,
@@ -73,7 +72,3 @@ export default class Books extends React.Component {
 		);
 	}
 }
-
-Books.propTypes = {
-	match: PropTypes.objectOf(PropTypes.any).isRequired,
-};
