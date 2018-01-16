@@ -6,13 +6,15 @@
 }
 
 .book-profile {
+	color: #F4EEF8;
 	display: flex;
 	justify-content: space-between;
 	flex-wrap: wrap;
 	align-items: flex-start;
 	margin: 0 auto;
 	font-family: 'Bubblegum Sans', cursive;
-	background-color: rgb(235, 254, 255);
+	background-color: rgb(157, 141, 143);
+	background-color: rgba(157, 141, 143, 0.8);
 	width: 75%;
 	padding: 10px;
 	height: 360px;
@@ -57,9 +59,11 @@
 }
 
 .extra-books {
+	color: #F4EEF8;
 	font-family: 'Bubblegum Sans', cursive;
 	font-size: 14px;
-	background-color: rgba(255, 134, 235, 0.37);
+	background-color: rgb(66, 62, 0);
+	background-color: rgba(66, 62, 0, .3);
 	width: 25%;
 	height: 380px;
 }

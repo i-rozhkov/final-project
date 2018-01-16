@@ -5,9 +5,12 @@
 	align-items: center;
 	font-family: 'Bubblegum Sans', cursive;
 	font-size: 18px;
-	border-top: 1px solid #aaa;
-	border-bottom: 1px solid #aaa;
+	border-top: 1px solid #F4EEF8;
+	border-bottom: 1px solid #F4EEF8;
 	padding-bottom: 20px;
+	color: #F4EEF8;
+	background-color: rgb(70, 52, 78);
+	background-color: rgba(70, 52, 78, 0.5);
 }
 
 .address-table h2 {
@@ -42,7 +45,7 @@
 	font-style: italic;	
 	font-size: 20px;
 	padding: 5px;
-	border-bottom: 1px solid #aaa;
+	border-bottom: 1px solid #F4EEF8;
 	margin-top: 30px;
 }
 
@@ -85,6 +88,7 @@
 
 .row a {
 	text-decoration: none;
-	color: #ad095b;
+	color: rgb(250, 237, 38);
+	color: rgba(250, 237, 38, .9);
 	text-align: center;
 }

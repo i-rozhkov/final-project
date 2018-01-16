@@ -248,6 +248,6 @@ Rating.defaultProps = {
 	count: 5,
 	char: '★',
 	size: 32,
-	color1: 'gray',
-	color2: '#ffd700',
+	color1: '#46344E',
+	color2: '#FFF44F',
 };

@@ -2,7 +2,6 @@
 @import url('./pagination.css');
 
 .gallery {
-	border: 2px solid #f0f;
 	display: flex;
 	flex-direction: row;
 }
@@ -15,7 +14,8 @@
 	height: 702px;
 	overflow-y: auto;
 	width: 80%;
-	background-color: rgb(214, 241, 239);
+	background-color: rgb(66, 62, 0);
+	background-color: rgba(66, 62, 0, .3);
 }
 
 .gallery-title {
@@ -25,10 +25,13 @@
 	width: 76%;
 	font-family: 'Bubblegum Sans', cursive;
 	font-size: 32px;
+	color: rgb(70, 52, 78);
+	color: rgba(70, 52, 78, 0.8);
 }
 
 .sorting-container {
 	width: 20%;
+	color: #F4EEF8;
 	padding: 0;
 	margin: 20px 0 0;
 	font-family: 'Bubblegum Sans', cursive;
@@ -37,9 +40,12 @@
 
 .sorting-container select {
 	margin-left: 10px;
-	font-size: 16px;
+	padding-top: 4px;
+	font-size: 20px;
 	width: 120px;
-	font-family: 'Nobile', sans-serif;
+	border: none;
+	background-color: #F4EEF8;
+	font-family: 'Bubblegum Sans', cursive;
 }
 
 .pic-holder {
@@ -49,13 +55,13 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	border: 1px solid #000;
+	border: 1px solid #F4EEF8;
 	margin: 20px 0 5px;
 	transition: all .25s ease;
 }
 
 .pic-holder:hover {
-	border-color: rgb(128, 216, 125);
+	border-color: rgba(250, 237, 38, .9);
 	opacity: 0.8;
 }
 
@@ -81,7 +87,7 @@
 
 .gallery-item-title a, .gallery-item-author a {
 	text-decoration: none;
-	color: #000;
+	color: #F4EEF8;
 }
 
 .gallery-item-title {
@@ -90,7 +96,7 @@
 }
 
 .gallery-item-title a:hover, .gallery-item-author a:hover {
-	color: rgb(92, 163, 44);
+	color: rgba(250, 237, 38, .9);
 }
 
 .gallery-item-score .rating {
@@ -108,7 +114,8 @@
 	height: 40px;
 	cursor: pointer;
 	outline-color: #aaa;
-	background-color: rgb(156, 184, 31);
+	background-color: rgb(219, 84, 66);
+	background-color: rgba(219, 84, 66, 0.8);
 	border: none;
 	border-radius: 5px;
 	transition: background-color .25s ease,
@@ -119,8 +126,9 @@
 }
 
 .add-book:hover {
-	background-color: rgb(17, 121, 153);
-	color: #ddd;
+	background-color: rgb(70, 52, 78);
+	background-color: rgba(70, 52, 78, 0.8);
+	color: #F4EEF8;
 }
 
 .backdrop {
@@ -141,8 +149,9 @@
 	width: 300px;
 	text-align: center;
 	font-family: 'Bubblegum Sans', cursive;
-	background-color: rgba(177, 62, 187, 0.9);
-	color: #fff;
+	background-color: rgb(157, 141, 143);
+	background-color: rgba(157, 141, 143, 0.8);
+	color: #F4EEF8;
 }
 
 .modal-form input, .modal-form textarea {
@@ -164,7 +173,8 @@
 	width: 100px;
 	height: 30px;
 	outline-color: #aaa;
-	background-color: rgb(156, 184, 31);
+	background-color: rgb(219, 84, 66);
+	background-color: rgba(219, 84, 66, 0.8);
 	border: none;
 	border-radius: 5px;
 	transition: background-color .25s ease,
@@ -173,6 +183,7 @@
 }
 
 .close:hover, .add:hover {
-	background-color: rgb(17, 121, 153);
-	color: #ddd;
+	background-color: rgb(70, 52, 78);
+	background-color: rgba(70, 52, 78, 0.8);
+	color: #F4EEF8;
 }

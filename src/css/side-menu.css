@@ -6,24 +6,49 @@ aside {
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
+	background-color: rgb(157, 141, 143);
+	background-color: rgba(157, 141, 143, 0.8);
 	align-items: center;
 }
 
 .side-menu-item {
 	width: 100%;
-	background: #ffffff; /* Old browsers */
-	background: -moz-linear-gradient(top, #ffffff 0%, #e5e5e5 100%); /* FF3.6-15 */
-	background: -webkit-linear-gradient(top, #ffffff 0%,#e5e5e5 100%); /* Chrome10-25,Safari5.1-6 */
-	background: linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 	text-align: center;	
+}
+
+.side-menu-item:after {
+	content: '';
+	display: block;
+	width: 60%;
+	height: 1px;
+	position: relative;
+	left: 20%;
+	background-color: #F4EEF8;
+}
+
+.side-menu-item:last-child:after {
+	display: none;
 }
 
 .side-menu-item a {
 	display: block;
+	letter-spacing: 1px;
 	width: 100%;
-	padding: 6px 0;
-	color: hsl(355, 72%, 55%);
+	padding: 6px 0 5px;
+	color: rgba(250, 237, 38, .9);
 	text-decoration: none;
 	font-family: 'Fredericka the Great', cursive;
 	font-size: 24px;
+}
+
+.side-menu-item:last-child a {
+	padding-bottom: 6px;
+}
+
+.side-menu-item:first-child a {
+	padding-top: 6px;
+}
+
+.side-menu-item a:hover {
+	color: #FFF7A8;
 }

@@ -12,23 +12,24 @@
 	display: block;
 	padding: 5px 10px;
 	cursor: pointer;
-	outline-color: #fff;
-	border: 1px solid #000; 
+	color: #F4EEF8;
+	outline-color: #F4EEF8;
+	border: 1px solid #F4EEF8;
 	border-radius: 2px;
 }
 
 .pagination a:hover {
 	background-color: rgb(175, 0, 161);
-	background-color: rgba(175, 0, 161, .4);
-	color: #fff;
+	background-color: rgba(155, 120, 111, 0.8);
+	color: #F4EEF8;
 	padding: 6px 11px;
 	border: none;
 }
 
 .pagination .active a {
 	background-color: rgb(175, 0, 161);
-	background-color: rgba(175, 0, 161, .4);
-	color: #fff;
+	background-color: rgba(155, 120, 111, 0.8);
+	color: #F4EEF8;
 	padding: 6px 11px;
 	border: none;
 }

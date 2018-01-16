@@ -11,20 +11,25 @@
 @import url('./profile.css');
 
 * {
-	outline-color: rgb(60, 252, 118);
+	outline-color: rgb(219, 84, 66);
 }
 
 html, body {
 	min-height: 100%;
 	margin: 0;
 	padding: 0;
+	/* background-color: #e1e8f0; */
+	background-image: url('../img/bg.jpg');
+	background-size: cover;
+	background-repeat: no-repeat; 
 }
 
 header {
 	margin: 30px 0;
 	width: 100%;
 	height: 60px;
-	background-color: #C71585;
+	background-color: rgb(70, 52, 78);
+	background-color: rgba(70, 52, 78, 0.5);
 	text-align: center;
 	display: flex;
 	justify-content: space-around;
@@ -71,7 +76,8 @@ footer .logo {
 	top: 32px;
 	left: 72px;
 	font-size: 28px;
-	color: #000;
+	color: rgb(250, 237, 38);
+	color: rgba(250, 237, 38, .9);
 }
 
 .site-name {
@@ -92,6 +98,21 @@ footer .logo {
 	background-repeat: no-repeat;
 	background-size: 30px 30px;
 	background-position: 365px 3px;
+	background-color: rgba(70, 52, 78, 0.5);
+	color: #F4EEF8;
+}
+
+.searchField::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #F4EEF8;
+    opacity: 1; /* Firefox */
+}
+
+.searchField:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #F4EEF8;
+}
+
+.searchField::-ms-input-placeholder { /* Microsoft Edge */
+    color: #F4EEF8;
 }
 
 .signup-form {
@@ -101,7 +122,7 @@ footer .logo {
 }
 
 .signup-form p {
-	color: #000;
+	color: #F4EEF8;
 	padding: 0;
 	margin: 0 5px 0 auto;
 	font-family: 'Bubblegum Sans', cursive;
@@ -112,7 +133,7 @@ footer .logo {
 	display: inline-block;
 	margin: 0;
 	font-size: 12px;
-}
+}	
 
 .fa-facebook-official, .fa-google-plus-square, .fa-twitter-square {
 	background-color: #fff;
@@ -130,7 +151,7 @@ footer .logo {
 }
 
 .fa-google-plus-square:before {
-	color: #DB4437
+	color: #DB4437;
 }
 
 .fa-google-plus-square:hover, .fa-twitter-square:hover, .fa-facebook-official:hover {
@@ -151,17 +172,18 @@ footer {
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
-	background-color: #C71585;
+	background-color: rgba(70, 52, 78, 0.5);
 	position: relative;	
 	font-family: 'Nobile', sans-serif;
 	font-size: 14px;
 }
 
 footer article {
-	width: 500px;
+	width: 450px;
 	text-align: center;
 	font-size: 12px;
 	line-height: 20px;
+	color: #F4EEF8;
 }
 
 footer article .site-name {
@@ -170,11 +192,12 @@ footer article .site-name {
 
 .social {
 	display: flex;
-	width: 450px;
-	min-width: 450px;
+	width: 500px;
+	min-width: 500px;
 	flex-wrap: wrap;
 	align-items: baseline;
 	justify-content: space-around;
+	font-family: 'Bubblegum Sans', cursive;
 }
 
 .social p {
@@ -182,8 +205,8 @@ footer article .site-name {
 	padding: 0;
 	width: 100%;
 	text-align: center;
-	font-size: 16px;
-	color: #fff;
+	font-size: 20px;
+	color: rgba(250, 237, 38, .9);
 }
 
 .social img {
@@ -197,16 +220,16 @@ footer article .site-name {
 .social a {
 	text-decoration: none;
 	height: 35px;
-	color: #fff;
-	font-size: 10px;
+	color: #F4EEF8;
+	font-size: 14px;
 	width: 150px;
 	text-align: left;
 	line-height: 32px;
 }
 
 .social a:hover {
-	color: #000;
-	opacity: .8;
+	color: rgb(219, 84, 66);
+	color: rgba(219, 84, 66, 0.8);
 }
 
 .author .images {
@@ -216,20 +239,21 @@ footer article .site-name {
 }
 
 .breadcrumb-list {
-	background-color: rgb(252, 215, 255);
 	display: flex;
-	margin: 20px 60px;
-	padding-left: 15px;
-	padding-top: 5px;
+	margin: 20px 65px;
+	width: auto;
 }
 
 .breadcrumb-item a {
 	text-decoration: none;
-	color: rgb(125, 34, 148);
+	color: #F4EEF8;
 	font-size: 20px;
 }
 
 .breadcrumb-item:not(:first-child):before {
-	content: '/';
+	content: '>';
+	font-family: 'Bubblegum Sans', cursive;
+	font-size: 20px;
 	margin: 0 10px;
+	color: #F4EEF8;
 }
