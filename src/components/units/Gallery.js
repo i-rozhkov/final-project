@@ -16,7 +16,7 @@ const getMainCategory = (category) => {
 const getGalleryTitle = () => {
 	let path = window.location.pathname.slice(window.location.pathname.indexOf('/', 2) + 1);
 	path = path.replace('/', '');
-	path = path[0].toUpperCase() + path.slice(1);
+	path = path.split('-').map(item => item[0].toUpperCase() + item.slice(1)).join(' ');
 	return path;
 };
 
@@ -37,6 +37,12 @@ export default class Gallery extends React.Component {
 		this.toggleModal = this.toggleModal.bind(this);
 		this.addToLibrary = this.addToLibrary.bind(this);
 		this.renderAddButton = this.renderAddButton.bind(this);
+	}
+
+	componentWillMount() {
+		this.setState({
+			exampleItems: this.props.booksList,
+		});
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -84,7 +90,7 @@ export default class Gallery extends React.Component {
 					</Link>
 				</p>
 				<p className="gallery-item-author">
-					<Link to={`/${item.author.toLowerCase().replace(' ', '-')}`}>
+					<Link to={`/author/${item.author.toLowerCase().replace(' ', '-')}`}>
 						{item.author}
 					</Link>
 				</p>
@@ -173,10 +179,11 @@ export default class Gallery extends React.Component {
 Gallery.propTypes = {
 	booksList: PropTypes.arrayOf(PropTypes.object),
 	showAddButton: PropTypes.bool,
-	sortBooks: PropTypes.func.isRequired,
+	sortBooks: PropTypes.func,
 };
 
 Gallery.defaultProps = {
 	booksList: [],
 	showAddButton: true,
+	sortBooks: () => {},
 };

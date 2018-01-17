@@ -16,8 +16,11 @@
 }
 
 .error-message-container {
-	width: 850px;
-	margin: 20px auto;
+	color: #F4EEF8;
+	background-color: rgb(150, 150, 150);
+	background-color: rgba(0, 0, 0, 0.3);
+	width: 100%;
+	margin: 30px auto;
 	padding: 0;
 	text-align: center;
 }
@@ -31,6 +34,8 @@
 	font-size: 50px;
 	letter-spacing: 8px;
 	line-height: 40px;
+	color: rgb(250, 237, 38);
+	color: rgba(250, 237, 38, .9);
 }
 
 .error-description {

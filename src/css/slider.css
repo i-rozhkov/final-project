@@ -29,7 +29,6 @@
 	border-radius: 50%;
 	cursor: pointer;
 	transition: transform ease-in .1s;
-	outline: none;
 }
 
 .slider-left-arrow:hover, .slider-right-arrow:hover {
@@ -49,10 +48,6 @@
 	transform: translate(2px, 0);
 }
 
-.slider-right-arrow img:focus {
-	outline: 0;
-}
-
 .slider-left-arrow {
 	position: absolute;
 	top: 125px;
@@ -65,10 +60,6 @@
 	transform: translate(-2px, 0);
 }
 
-.slider-left-arrow img:focus {
-	outline: 0;
-}
-  
 .dots-container {
 	position: absolute;
 	bottom: 0;
@@ -85,7 +76,6 @@
 	margin-right: 5px;
 	cursor: pointer;
 	border-radius: 50%;
-	outline: none;
 	opacity: .8;
 }
 

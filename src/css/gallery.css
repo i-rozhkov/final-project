@@ -15,7 +15,7 @@
 	overflow-y: auto;
 	width: 80%;
 	background-color: rgb(66, 62, 0);
-	background-color: rgba(66, 62, 0, .3);
+	background-color: rgba(0, 0, 0, 0.3);
 }
 
 .gallery-title {
@@ -96,6 +96,7 @@
 }
 
 .gallery-item-title a:hover, .gallery-item-author a:hover {
+	color: rgb(250, 237, 38);
 	color: rgba(250, 237, 38, .9);
 }
 
