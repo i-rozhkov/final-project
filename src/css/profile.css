@@ -35,6 +35,17 @@
 	margin-top: 5px;
 }
 
+.book-author a {
+	margin-left: 4px;
+	color: rgb(250, 237, 38);
+	color: rgba(250, 237, 38, .9);
+}
+
+.book-author a:hover {
+	color: rgb(219, 84, 66);
+	color: rgba(219, 84, 66, .9);
+}
+
 .book-cover {
 	height: 300px;
 	width: 300px;
@@ -56,6 +67,57 @@
 	width: 150px;
 	position: absolute;
 	right: 0;
+}
+
+.share-buttons {
+	margin: 0 auto;
+}
+
+.share-span {
+	font-size: 24px;
+	margin-right: 20px;
+}
+
+.share-button {
+	cursor: pointer;
+	width: 48px;
+	height: 48px;
+	border: none;
+	border-radius: 2px;
+	color: #fff;
+	margin: 0 10px;
+	font-family: "FontAwesome";
+	font-size: 24px;
+	opacity: .7;
+	transition: opacity .2s ease-in;
+}
+
+.share-button:hover {
+	opacity: 1;
+}
+
+#tw-button {
+	background-color: rgb(0, 172, 237);
+}
+
+#tw-button:before {
+	content: "\f099";
+}
+
+#li-button {
+	background-color: rgb(0, 119, 181);
+}
+
+#li-button:before {
+	content: "\f0e1";
+}
+
+#gp-button {
+	background-color: rgb(219, 68, 55);
+}
+
+#gp-button:before {
+	content: "\f0d5";
 }
 
 .extra-books {
@@ -110,6 +172,27 @@
 	overflow: hidden;
 }
 
+.extra-title a {
+	color: #F4EEF8;
+	text-decoration: none;
+}
+
+.extra-title a:hover {
+	color: rgb(250, 237, 38);
+	color: rgba(250, 237, 38, .9);
+}
+
 .extra-author {
 	font-style: italic;
+}
+
+.extra-author a {
+	margin-left: 4px;
+	color: rgb(250, 237, 38);
+	color: rgba(250, 237, 38, .9);
+}
+
+.extra-author a:hover {
+	color: rgb(219, 84, 66);
+	color: rgba(219, 84, 66, .9);
 }

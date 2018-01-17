@@ -25,8 +25,8 @@
 	width: 76%;
 	font-family: 'Bubblegum Sans', cursive;
 	font-size: 32px;
-	color: rgb(70, 52, 78);
-	color: rgba(70, 52, 78, 0.8);
+	color: rgb(250, 237, 38);
+	color: rgba(250, 237, 38, .9);
 }
 
 .sorting-container {
@@ -35,17 +35,18 @@
 	padding: 0;
 	margin: 20px 0 0;
 	font-family: 'Bubblegum Sans', cursive;
-	font-size: 24px;
+	font-size: 18px;
 }
 
 .sorting-container select {
 	margin-left: 10px;
 	padding-top: 4px;
-	font-size: 20px;
+	font-size: 18px;
 	width: 120px;
 	border: none;
-	background-color: #F4EEF8;
+	color: #F4EEF8;
 	font-family: 'Bubblegum Sans', cursive;
+	background-color: rgb(70, 52, 78);
 }
 
 .pic-holder {
@@ -61,6 +62,7 @@
 }
 
 .pic-holder:hover {
+	border-color: rgb(250, 237, 38);
 	border-color: rgba(250, 237, 38, .9);
 	opacity: 0.8;
 }

@@ -19,16 +19,16 @@
 }
 
 .pagination a:hover {
-	background-color: rgb(175, 0, 161);
-	background-color: rgba(155, 120, 111, 0.8);
+	background-color: rgb(219, 84, 66);
+	background-color: rgba(219, 84, 66, 0.8);
 	color: #F4EEF8;
 	padding: 6px 11px;
 	border: none;
 }
 
 .pagination .active a {
-	background-color: rgb(175, 0, 161);
-	background-color: rgba(155, 120, 111, 0.8);
+	background-color: rgb(219, 84, 66);
+	background-color: rgba(219, 84, 66, 0.8);
 	color: #F4EEF8;
 	padding: 6px 11px;
 	border: none;

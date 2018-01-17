@@ -55,13 +55,17 @@
 .menu-item a {
 	display: inline-block;
 	text-decoration: none;
-	color: #F4EEF8;
+	color: rgb(70, 52, 78);
 	margin: 0;
 	padding: 22px 20px;
 }
 
+.menu-item > a {
+	color: #F4EEF8;
+}
+
 .submenu {
-	z-index: 2;
+	z-index: 11;
 	position: absolute;
 	top: 50px;
 	left: 10px;
@@ -71,7 +75,7 @@
 	display: none;
 	justify-content: space-between;
 	flex-direction: column;
-	background-color: rgba(70, 52, 78, 0.6);
+	background-color: rgb(157, 141, 143);
 }
 
 .submenu-item a {

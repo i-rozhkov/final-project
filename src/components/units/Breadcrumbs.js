@@ -16,15 +16,23 @@ const generateBreadCrumb = (pathname) => {
 			return (
 				<li className="breadcrumb-item" key={index}>
 					<Link to="/">
-						<span className="site-name">ForestLib</span> - online library
+						<i className="fa fa-home" aria-hidden="true" />
 					</Link>
 				</li>);
 		}
 
 		// Build the path for the current URL
 		const url = `${paths.slice(0, index + 1).join('/')}`;
+
+		if (index === paths.length - 1) {
+			return (
+				<li className="breadcrumb-item" style={{ zIndex: 10 - index }} key={index}>
+					<Link to={url}>{path.split('-').map(item => item[0].toUpperCase() + item.slice(1)).join(' ')}</Link>
+				</li>);
+		}
+
 		// HTML structure for every link except the first
-		return (<li className="breadcrumb-item" key={index}><Link to={url}>{path}</Link></li>);
+		return (<li className="breadcrumb-item" style={{ zIndex: 10 - index }} key={index}><Link to={url}>{path[0].toUpperCase() + path.slice(1)}</Link></li>);
 	});
 };
 

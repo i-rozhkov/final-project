@@ -35,7 +35,7 @@ aside {
 	letter-spacing: 1px;
 	width: 100%;
 	padding: 6px 0 5px;
-	color: rgba(250, 237, 38, .9);
+	color: #F4EEF8;
 	text-decoration: none;
 	font-family: 'Fredericka the Great', cursive;
 	font-size: 24px;
@@ -50,5 +50,6 @@ aside {
 }
 
 .side-menu-item a:hover {
-	color: #FFF7A8;
+	color: rgb(250, 237, 38);
+	color: rgba(250, 237, 38, .9);
 }
