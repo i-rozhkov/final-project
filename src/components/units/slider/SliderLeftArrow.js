@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+const leftArrow = require('../../../img/slider-left-arrow.svg');
+
 const SliderLeftArrow = ({ prevSlide }) => (
 	<div className="slider-left-arrow" onClick={prevSlide} role="button" tabIndex="0">
-		<img src="/src/img/slider-left-arrow.svg" alt="Left Arrow" />
+		<img src={leftArrow} alt="Left Arrow" />
 	</div>
 );
 

@@ -66,7 +66,6 @@ class App extends React.Component {
 					}
 
 					const refreshedItems = this.filterBooksById(id, immutable);
-					console.log(refreshedItems);
 					this.setState({
 						audioList: refreshedItems,
 						immutableSearchAudio: refreshedItems,

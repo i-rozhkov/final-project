@@ -5,6 +5,11 @@ import Dots from './Dots';
 import SliderLeftArrow from './SliderLeftArrow';
 import SliderRightArrow from './SliderRightArrow';
 import Autoplay from './Autoplay';
+import '../../../img/slide-1.jpg';
+import '../../../img/slide-2.jpg';
+import '../../../img/slide-3.jpg';
+import '../../../img/slide-4.jpg';
+import '../../../img/slide-5.jpg';
 
 export default class Slider extends React.Component {
 	constructor(props) {
@@ -26,7 +31,7 @@ export default class Slider extends React.Component {
 	}
 
 	componentDidMount() {
-		axios.get('/src/slider.config.json')
+		axios.get('/data/slider.config.json')
 			.then((res) => {
 				this.setState({ images: res.data });
 			});

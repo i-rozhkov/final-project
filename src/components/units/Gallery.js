@@ -71,7 +71,7 @@ export default class Gallery extends React.Component {
 
 	showImage(item) {
 		return (
-			<div className="gallery-item" key={Math.random().toString(36).substring(2, 8)}>
+			<div className="gallery-item" key={item.author}>
 				<Link to={`/category/${getMainCategory(item.category)}/${item.title.toLowerCase().replace(/ /g, '-')}`}>
 					<div className="pic-holder">
 						<img
