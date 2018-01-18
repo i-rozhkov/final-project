@@ -27,6 +27,9 @@ class App extends React.Component {
 			audioList: [],
 			immutableBooks: [],
 			immutableAudio: [],
+			immutableSearchBooks: [],
+			immutableSearchAudio: [],
+			searchString: '',
 		};
 
 		this.changeId = this.changeId.bind(this);
@@ -35,6 +38,8 @@ class App extends React.Component {
 	}
 
 	componentWillMount() {
+		const ids = ['new', 'popular', 'bestsellers'];
+		const id = window.location.pathname.split('/').reverse()[0];
 		const that = this;
 		axios.get('http://localhost:8080/data/books.json')
 			.then((response) => {
@@ -51,6 +56,24 @@ class App extends React.Component {
 					immutableAudio: response.data,
 					immutableSearchAudio: response.data,
 				});
+
+				if (ids.indexOf(id) !== -1) {
+					let immutable;
+					if (window.location.pathname.indexOf('books') !== -1) {
+						immutable = this.state.immutableBooks.slice();
+					} else if (window.location.pathname.indexOf('audio') !== -1) {
+						immutable = this.state.immutableAudio.slice();
+					}
+
+					const refreshedItems = this.filterBooksById(id, immutable);
+					console.log(refreshedItems);
+					this.setState({
+						audioList: refreshedItems,
+						immutableSearchAudio: refreshedItems,
+						booksList: refreshedItems,
+						immutableSearchBooks: refreshedItems,
+					});
+				}
 			});
 	}
 
@@ -76,23 +99,6 @@ class App extends React.Component {
 		return filteredBooks;
 	}
 
-	// filterByCategory(event) {
-	// 	const category = event.target.parentNode.id;
-	// 	console.log(category);
-	// 	let immutable;
-	// 	if (window.location.pathname.indexOf('books') !== -1) {
-	// 		immutable = this.state.immutableBooks.slice();
-	// 	} else if (window.location.pathname.indexOf('audio') !== -1) {
-	// 		immutable = this.state.immutableAudio.slice();
-	// 	}
-	// 	const categorized = immutable.filter(item =>
-	// 		item.category.indexOf(category) !== -1);
-	// 	this.setState({
-	// 		booksList: categorized,
-	// 		audioList: categorized,
-	// 	});
-	// }
-
 	filterBySearch(event) {
 		const stringToFilter = event.target.value;
 		let immutable;
@@ -101,18 +107,24 @@ class App extends React.Component {
 		} else if (window.location.pathname.indexOf('audio') !== -1) {
 			immutable = this.state.immutableSearchAudio.slice();
 		}
-		const filteredArray = immutable.filter(item =>
-			item.title.indexOf(stringToFilter) !== -1);
-		this.setState({
-			booksList: filteredArray,
-			audioList: filteredArray,
-		});
+
+		if (window.location.pathname.indexOf('category') !== -1) {
+			this.setState({
+				searchString: stringToFilter,
+			});
+		} else {
+			const filteredArray = immutable.filter(item =>
+				item.title.indexOf(stringToFilter) !== -1);
+			this.setState({
+				booksList: filteredArray,
+				audioList: filteredArray,
+			});
+		}
 	}
 
 	changeId(event) {
 		let immutable;
 		const newId = event.target.href.slice(28);
-		console.log(newId);
 		if (event.target.href.indexOf('books') !== -1) {
 			immutable = this.state.immutableBooks.slice();
 		} else if (event.target.href.indexOf('audio') !== -1) {
@@ -135,7 +147,7 @@ class App extends React.Component {
 					<Switch>
 						<Route exact path="/" component={Home} />
 						<Route path="/category/:categoryName/:id" component={Book} />
-						<Route path="/category/:categoryName" component={Category} />
+						<Route path="/category/:categoryName" render={props => (<Category searchString={this.state.searchString} {...props} />)} />
 						<Route path="/author/:authorName" component={Author} />
 						<Route path="/contacts" component={Contacts} />
 						<Route path="/books" render={props => (<Books booksList={this.state.booksList} {...props} />)} />

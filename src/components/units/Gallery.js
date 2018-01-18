@@ -71,8 +71,8 @@ export default class Gallery extends React.Component {
 
 	showImage(item) {
 		return (
-			<div className="gallery-item" key={item.id}>
-				<Link to={`/books/${getMainCategory(item.category)}/${item.title.toLowerCase().replace(/ /g, '-')}`}>
+			<div className="gallery-item" key={Math.random().toString(36).substring(2, 8)}>
+				<Link to={`/category/${getMainCategory(item.category)}/${item.title.toLowerCase().replace(/ /g, '-')}`}>
 					<div className="pic-holder">
 						<img
 							src={item.image}
@@ -83,7 +83,7 @@ export default class Gallery extends React.Component {
 					</div>
 				</Link>
 				<p className="gallery-item-title">
-					<Link to={`/books/${getMainCategory(item.category)}/${item.title.toLowerCase().replace(/ /g, '-')}`}>
+					<Link to={`/category/${getMainCategory(item.category)}/${item.title.toLowerCase().replace(/ /g, '-')}`}>
 						{item.title}
 					</Link>
 				</p>
