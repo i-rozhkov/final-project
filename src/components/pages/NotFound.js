@@ -1,12 +1,9 @@
 import React from 'react';
-import Header from '../units/Header';
-import Footer from '../units/Footer';
 
 export default class NotFound extends React.Component {
 	render() {
 		return (
 			<div className="not-found">
-				<Header />
 
 				<div className="error-message-container">
 					<p className="main-error-message">There is nothing here</p>
@@ -17,7 +14,6 @@ export default class NotFound extends React.Component {
 					</p>
 				</div>
 
-				<Footer />
 			</div>
 		);
 	}

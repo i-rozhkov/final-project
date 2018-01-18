@@ -12,7 +12,7 @@ export default class Header extends React.Component {
 
 				<Logo />
 
-				<Nav changeId={this.props.changeId} pickType={this.props.pickType} />
+				<Nav changeId={this.props.changeId} />
 
 				<SearchField filterBySearch={this.props.filterBySearch} />
 
@@ -26,11 +26,9 @@ export default class Header extends React.Component {
 Header.propTypes = {
 	filterBySearch: PropTypes.func,
 	changeId: PropTypes.func,
-	pickType: PropTypes.func,
 };
 
 Header.defaultProps = {
-	changeId: () => {},
 	filterBySearch: () => {},
-	pickType: () => {},
+	changeId: () => {},
 };

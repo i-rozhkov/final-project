@@ -20,7 +20,9 @@ export default class SideMenu extends React.Component {
 		const categoryToLow = category.toLowerCase();
 		return (
 			<li key={index} className="side-menu-item">
-				<Link to={`/category/${categoryToLow}`}>
+				<Link
+					to={`/category/${categoryToLow}`}
+				>
 					{category}
 				</Link>
 			</li>

@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import Header from '../units/Header';
-import Footer from '../units/Footer';
 import Gallery from '../units/Gallery';
 import Breadcrumbs from '../units/Breadcrumbs';
 
@@ -41,10 +39,8 @@ export default class Author extends React.Component {
 	render() {
 		return (
 			<section className="author">
-				<Header />
 				<Breadcrumbs />
 				<Gallery booksList={this.state.booksList} showAddButton={false} />
-				<Footer />
 			</section>
 		);
 	}

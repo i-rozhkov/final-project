@@ -14,10 +14,8 @@ const getMainCategory = (category) => {
 };
 
 const getGalleryTitle = () => {
-	let path = window.location.pathname.slice(window.location.pathname.indexOf('/', 2) + 1);
-	path = path.replace('/', '');
-	path = path.split('-').map(item => item[0].toUpperCase() + item.slice(1)).join(' ');
-	return path;
+	const path = window.location.pathname.split('/').reverse()[0];
+	return path[0].toUpperCase() + path.slice(1);
 };
 
 export default class Gallery extends React.Component {
@@ -74,7 +72,7 @@ export default class Gallery extends React.Component {
 	showImage(item) {
 		return (
 			<div className="gallery-item" key={item.id}>
-				<Link to={`/category/${getMainCategory(item.category)}/${item.title.toLowerCase().replace(/ /g, '-')}`}>
+				<Link to={`/books/${getMainCategory(item.category)}/${item.title.toLowerCase().replace(/ /g, '-')}`}>
 					<div className="pic-holder">
 						<img
 							src={item.image}
@@ -85,7 +83,7 @@ export default class Gallery extends React.Component {
 					</div>
 				</Link>
 				<p className="gallery-item-title">
-					<Link to={`/category/${getMainCategory(item.category)}/${item.title.toLowerCase().replace(/ /g, '-')}`}>
+					<Link to={`/books/${getMainCategory(item.category)}/${item.title.toLowerCase().replace(/ /g, '-')}`}>
 						{item.title}
 					</Link>
 				</p>

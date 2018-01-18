@@ -1,7 +1,5 @@
 import React from 'react';
-import axios from 'axios';
-import Header from '../units/Header';
-import Footer from '../units/Footer';
+import PropTypes from 'prop-types';
 import Gallery from '../units/Gallery';
 import Breadcrumbs from '../units/Breadcrumbs';
 
@@ -10,43 +8,19 @@ export default class Books extends React.Component {
 		super(props);
 
 		this.state = {
-			booksList: [],
-			immutable: [],
-			type: '',
+			booksList: this.props.booksList,
 		};
 
-		this.filterBySearch = this.filterBySearch.bind(this);
-		this.pickType = this.pickType.bind(this);
 		this.sortBooks = this.sortBooks.bind(this);
 	}
 
-	componentWillMount() {
-		const that = this;
-		const type = window.location.pathname.indexOf('books') === -1 ? 'audio' : 'books';
-		axios.get(`/data/${type}.json`)
-			.then((response) => {
-				that.setState({
-					booksList: response.data,
-					immutable: response.data,
-				});
-			});
-	}
-
-	componentDidUpdate(prevProps, prevState) {
-		if (this.state.type !== prevState.type) {
-			const that = this;
-			axios.get(`/data/${this.state.type}.json`)
-				.then((response) => {
-					that.setState({
-						booksList: response.data,
-						immutable: response.data,
-					});
-				});
-		}
-
-		if (this.state.booksList.indexOf(prevState.booksList[0]) === -1) {
+	componentWillReceiveProps(nextProps) {
+		if (this.props.booksList !== nextProps.booksList) {
 			const sel = document.getElementById('sortingSelect');
 			sel.options[0].selected = true;
+			this.setState({
+				booksList: nextProps.booksList,
+			});
 		}
 	}
 
@@ -54,37 +28,27 @@ export default class Books extends React.Component {
 		const sel = document.getElementById('sortingSelect');
 		const { value } = sel.options[sel.selectedIndex];
 		const arrayToSort = this.state.booksList.slice();
-		const sortedArray = arrayToSort.sort((a, b) => (a[value] > b[value] ? 1 : -1));
+		let sortedArray = arrayToSort.sort((a, b) => (a[value] > b[value] ? 1 : -1));
+		sortedArray = value === 'score' ? sortedArray.reverse() : sortedArray;
 		this.setState({
 			booksList: sortedArray,
-		});
-	}
-
-	filterBySearch(event) {
-		const stringToFilter = event.target.value;
-		const arrayToFilter = this.state.immutable.slice();
-		const filteredArray = arrayToFilter.filter(item =>
-			item.title.indexOf(stringToFilter) !== -1);
-		this.setState({
-			booksList: filteredArray,
-		});
-	}
-
-	pickType(event) {
-		const type = event.target.href.slice(-5);
-		this.setState({
-			type,
 		});
 	}
 
 	render() {
 		return (
 			<section>
-				<Header filterBySearch={this.filterBySearch} pickType={this.pickType} />
 				<Breadcrumbs />
-				<Gallery booksList={this.state.booksList} sortBooks={this.sortBooks} />
-				<Footer />
+				<Gallery
+					booksList={this.state.booksList}
+					sortBooks={this.sortBooks}
+				/>
 			</section>
 		);
 	}
 }
+
+Books.propTypes = {
+	booksList: PropTypes.arrayOf(PropTypes.object).isRequired,
+	// match: PropTypes.objectOf(PropTypes.any).isRequired,
+};

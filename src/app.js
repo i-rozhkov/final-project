@@ -1,5 +1,6 @@
 import 'normalize.css';
 import React from 'react';
+import axios from 'axios';
 import ReactDOM from 'react-dom';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import createBrowserHistory from 'history/createBrowserHistory';
@@ -10,28 +11,145 @@ import Home from './components/pages/Home';
 import Contacts from './components/pages/Contacts';
 import Books from './components/pages/Books';
 import Book from './components/pages/Book';
-import Category from './components/pages/Category';
 import Author from './components/pages/Author';
-import SubMenuItem from './components/pages/SubMenuItem';
+import Header from './components/units/Header';
+import Footer from './components/units/Footer';
+import Category from './components/pages/Category';
 
 const customHistory = createBrowserHistory();
 
+class App extends React.Component {
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			booksList: [],
+			audioList: [],
+			immutableBooks: [],
+			immutableAudio: [],
+		};
+
+		this.changeId = this.changeId.bind(this);
+		this.filterBooksById = this.filterBooksById.bind(this);
+		this.filterBySearch = this.filterBySearch.bind(this);
+	}
+
+	componentWillMount() {
+		const that = this;
+		axios.get('http://localhost:8080/data/books.json')
+			.then((response) => {
+				that.setState({
+					booksList: response.data,
+					immutableBooks: response.data,
+					immutableSearchBooks: response.data,
+				});
+			});
+		axios.get('http://localhost:8080/data/audio.json')
+			.then((response) => {
+				that.setState({
+					audioList: response.data,
+					immutableAudio: response.data,
+					immutableSearchAudio: response.data,
+				});
+			});
+	}
+
+	filterBooksById(id, arrayToFilter) {
+		let filteredBooks;
+		switch (id) {
+		case 'popular':
+			filteredBooks = arrayToFilter.filter(item => item.score > 5);
+			break;
+		case 'new':
+			filteredBooks = arrayToFilter.filter(item => item.year > 2010);
+			break;
+		case 'bestsellers':
+			filteredBooks = arrayToFilter.filter(item => item.score > 8);
+			break;
+		case '':
+			filteredBooks = arrayToFilter;
+			break;
+		default:
+			filteredBooks = arrayToFilter.filter(item => item.title.indexOf(id) !== -1);
+			break;
+		}
+		return filteredBooks;
+	}
+
+	// filterByCategory(event) {
+	// 	const category = event.target.parentNode.id;
+	// 	console.log(category);
+	// 	let immutable;
+	// 	if (window.location.pathname.indexOf('books') !== -1) {
+	// 		immutable = this.state.immutableBooks.slice();
+	// 	} else if (window.location.pathname.indexOf('audio') !== -1) {
+	// 		immutable = this.state.immutableAudio.slice();
+	// 	}
+	// 	const categorized = immutable.filter(item =>
+	// 		item.category.indexOf(category) !== -1);
+	// 	this.setState({
+	// 		booksList: categorized,
+	// 		audioList: categorized,
+	// 	});
+	// }
+
+	filterBySearch(event) {
+		const stringToFilter = event.target.value;
+		let immutable;
+		if (window.location.pathname.indexOf('books') !== -1) {
+			immutable = this.state.immutableSearchBooks.slice();
+		} else if (window.location.pathname.indexOf('audio') !== -1) {
+			immutable = this.state.immutableSearchAudio.slice();
+		}
+		const filteredArray = immutable.filter(item =>
+			item.title.indexOf(stringToFilter) !== -1);
+		this.setState({
+			booksList: filteredArray,
+			audioList: filteredArray,
+		});
+	}
+
+	changeId(event) {
+		let immutable;
+		const newId = event.target.href.slice(28);
+		console.log(newId);
+		if (event.target.href.indexOf('books') !== -1) {
+			immutable = this.state.immutableBooks.slice();
+		} else if (event.target.href.indexOf('audio') !== -1) {
+			immutable = this.state.immutableAudio.slice();
+		}
+		const filteredBooks = this.filterBooksById(newId, immutable);
+		this.setState({
+			booksList: filteredBooks,
+			audioList: filteredBooks,
+			immutableSearchAudio: filteredBooks,
+			immutableSearchBooks: filteredBooks,
+		});
+	}
+
+	render() {
+		return (
+			<BrowserRouter histoty={customHistory}>
+				<div className="app">
+					<Header changeId={this.changeId} filterBySearch={this.filterBySearch} />
+					<Switch>
+						<Route exact path="/" component={Home} />
+						<Route path="/category/:categoryName/:id" component={Book} />
+						<Route path="/category/:categoryName" component={Category} />
+						<Route path="/author/:authorName" component={Author} />
+						<Route path="/contacts" component={Contacts} />
+						<Route path="/books" render={props => (<Books booksList={this.state.booksList} {...props} />)} />
+						<Route path="/audio" render={props => (<Books booksList={this.state.audioList} {...props} />)} />
+						<Route component={NotFound} />
+					</Switch>
+					<Footer />
+				</div>
+			</BrowserRouter>
+		);
+	}
+}
+
 ReactDOM.render(
-	(
-		<BrowserRouter histoty={customHistory}>
-			<Switch>
-				<Route exact path="/" component={Home} />
-				<Route path="/category/:categoryName/:id" component={Book} />
-				<Route path="/category/:categoryName" component={Category} />
-				<Route path="/contacts" component={Contacts} />
-				<Route path="/books/:id" component={SubMenuItem} />
-				<Route path="/books" component={Books} />
-				<Route path="/audio/:id" component={SubMenuItem} />
-				<Route path="/audio" component={Books} />
-				<Route path="/author/:authorName" component={Author} />
-				<Route component={NotFound} />
-			</Switch>
-		</BrowserRouter>
-	),
+	<App />,
 	document.getElementById('main'),
 );

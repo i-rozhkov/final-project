@@ -1,7 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Header from '../units/Header';
-import Footer from '../units/Footer';
 import Profile from '../units/Profile';
 import Breadcrumbs from '../units/Breadcrumbs';
 
@@ -34,10 +32,8 @@ const Book = ({ match }) => {
 
 	return (
 		<section>
-			<Header />
 			<Breadcrumbs />
 			<Profile book={bookItem} extraBooks={bookItems} />
-			<Footer />
 		</section>
 	);
 };
