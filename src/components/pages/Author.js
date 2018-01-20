@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import Gallery from '../units/Gallery';
-import Breadcrumbs from '../units/Breadcrumbs';
 
 export default class Author extends React.Component {
 	constructor(props) {
@@ -39,7 +38,6 @@ export default class Author extends React.Component {
 	render() {
 		return (
 			<section className="author">
-				<Breadcrumbs />
 				<Gallery booksList={this.state.booksList} showAddButton={false} />
 			</section>
 		);

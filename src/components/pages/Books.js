@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Gallery from '../units/Gallery';
-import Breadcrumbs from '../units/Breadcrumbs';
 
 export default class Books extends React.Component {
 	constructor(props) {
@@ -38,7 +37,6 @@ export default class Books extends React.Component {
 	render() {
 		return (
 			<section>
-				<Breadcrumbs />
 				<Gallery
 					booksList={this.state.booksList}
 					sortBooks={this.sortBooks}

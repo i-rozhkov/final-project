@@ -2,7 +2,6 @@ import React from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import Gallery from '../units/Gallery';
-import Breadcrumbs from '../units/Breadcrumbs';
 
 function shuffle(a) {
 	const arr = a;
@@ -78,7 +77,6 @@ export default class Category extends React.Component {
 	render() {
 		return (
 			<section>
-				<Breadcrumbs />
 				<Gallery
 					sortBooks={this.sortBooks}
 					showAddButton={false}

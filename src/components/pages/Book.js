@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Profile from '../units/Profile';
-import Breadcrumbs from '../units/Breadcrumbs';
 
 const booksList = require('../../../data/books.json');
 
@@ -32,7 +31,6 @@ const Book = ({ match }) => {
 
 	return (
 		<section>
-			<Breadcrumbs />
 			<Profile book={bookItem} extraBooks={bookItems} />
 		</section>
 	);

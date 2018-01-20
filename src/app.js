@@ -15,6 +15,7 @@ import Author from './components/pages/Author';
 import Header from './components/units/Header';
 import Footer from './components/units/Footer';
 import Category from './components/pages/Category';
+import Breadcrumbs from './components/units/Breadcrumbs';
 
 const customHistory = createBrowserHistory();
 
@@ -143,6 +144,7 @@ class App extends React.Component {
 			<BrowserRouter histoty={customHistory}>
 				<div className="app">
 					<Header changeId={this.changeId} filterBySearch={this.filterBySearch} />
+					<Breadcrumbs />
 					<Switch>
 						<Route exact path="/" component={Home} />
 						<Route path="/category/:categoryName/:id" component={Book} />
