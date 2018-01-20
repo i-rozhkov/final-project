@@ -16,5 +16,6 @@ app.get('/audio', (req, res) => res.json(audio));
 app.get('/slider', (req, res) => res.json(slider));
 
 app.listen(config.port, () => {
-	console.log(`Application ${config.name} is running on http://${config.host}:${config.port}.`);
+	global.console
+		.log(`Application ${config.name} is running on http://${config.host}:${config.port}.`);
 });

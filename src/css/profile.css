@@ -17,7 +17,6 @@
 	background-color: rgba(157, 141, 143, 0.8);
 	width: 75%;
 	padding: 10px;
-	height: 360px;
 }
 
 .book-profile:not(:first-child) {
@@ -127,7 +126,6 @@
 	background-color: rgb(66, 62, 0);
 	background-color: rgba(66, 62, 0, .3);
 	width: 25%;
-	height: 380px;
 }
 
 .extra-paragraph {

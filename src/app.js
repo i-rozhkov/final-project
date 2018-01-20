@@ -41,40 +41,36 @@ class App extends React.Component {
 	componentWillMount() {
 		const ids = ['new', 'popular', 'bestsellers'];
 		const id = window.location.pathname.split('/').reverse()[0];
-		const that = this;
-		axios.get('http://localhost:8080/data/books.json')
-			.then((response) => {
-				that.setState({
-					booksList: response.data,
-					immutableBooks: response.data,
-					immutableSearchBooks: response.data,
-				});
+		axios.all([
+			axios.get('http://localhost:8080/data/books.json'),
+			axios.get('http://localhost:8080/data/audio.json'),
+		]).then(axios.spread((books, audio) => {
+			this.setState({
+				booksList: books.data,
+				immutableBooks: books.data,
+				immutableSearchBooks: books.data,
+				audioList: audio.data,
+				immutableAudio: audio.data,
+				immutableSearchAudio: audio.data,
 			});
-		axios.get('http://localhost:8080/data/audio.json')
-			.then((response) => {
-				that.setState({
-					audioList: response.data,
-					immutableAudio: response.data,
-					immutableSearchAudio: response.data,
-				});
 
-				if (ids.indexOf(id) !== -1) {
-					let immutable;
-					if (window.location.pathname.indexOf('books') !== -1) {
-						immutable = this.state.immutableBooks.slice();
-					} else if (window.location.pathname.indexOf('audio') !== -1) {
-						immutable = this.state.immutableAudio.slice();
-					}
-
-					const refreshedItems = this.filterBooksById(id, immutable);
-					this.setState({
-						audioList: refreshedItems,
-						immutableSearchAudio: refreshedItems,
-						booksList: refreshedItems,
-						immutableSearchBooks: refreshedItems,
-					});
+			if (ids.indexOf(id) !== -1) {
+				let immutable;
+				if (window.location.pathname.indexOf('books') !== -1) {
+					immutable = this.state.immutableBooks.slice();
+				} else if (window.location.pathname.indexOf('audio') !== -1) {
+					immutable = this.state.immutableAudio.slice();
 				}
-			});
+
+				const refreshedItems = this.filterBooksById(id, immutable);
+				this.setState({
+					audioList: refreshedItems,
+					immutableSearchAudio: refreshedItems,
+					booksList: refreshedItems,
+					immutableSearchBooks: refreshedItems,
+				});
+			}
+		}));
 	}
 
 	filterBooksById(id, arrayToFilter) {
@@ -147,7 +143,7 @@ class App extends React.Component {
 					<Breadcrumbs />
 					<Switch>
 						<Route exact path="/" component={Home} />
-						<Route path="/category/:categoryName/:id" component={Book} />
+						<Route path="/category/:categoryName/:id" render={props => (<Book booksList={this.state.booksList} {...props} />)} />
 						<Route path="/category/:categoryName" render={props => (<Category searchString={this.state.searchString} {...props} />)} />
 						<Route path="/author/:authorName" component={Author} />
 						<Route path="/contacts" component={Contacts} />

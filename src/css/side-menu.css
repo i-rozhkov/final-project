@@ -7,7 +7,7 @@ aside {
 	flex-direction: column;
 	justify-content: flex-start;
 	background-color: rgb(157, 141, 143);
-	background-color: rgba(157, 141, 143, 0.8);
+	background-color: rgba(157, 141, 143, 0.5);
 	align-items: center;
 }
 

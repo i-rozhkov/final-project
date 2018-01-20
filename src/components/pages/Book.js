@@ -1,24 +1,81 @@
 import React from 'react';
+import axios from 'axios';
 import PropTypes from 'prop-types';
 import Profile from '../units/Profile';
 
-const booksList = require('../../../data/books.json');
+export default class Book extends React.Component {
+	constructor(props) {
+		super(props);
 
-const Book = ({ match }) => {
-	const title = match.params.id.split('-').map(item => item[0].toUpperCase() + item.slice(1))[0];
-	const bookItem = booksList.filter(item => item.title.indexOf(title) !== -1)[0];
+		this.state = {
+		};
 
-	const bookCategories = bookItem.category.indexOf('|') === -1 ?
-		bookItem.category :
-		bookItem.category.split('|');
+		this.getMainBook = this.getMainBook.bind(this);
+		this.getExtraBooks = this.getExtraBooks.bind(this);
+		this.shuffle = this.shuffle.bind(this);
+	}
 
-	let bookItems = (typeof bookCategories === 'string') ?
-		booksList.filter(item => item.category.indexOf(bookCategories) !== -1) :
-		booksList.filter(item => item.category.indexOf(bookCategories[0]) !== -1);
+	componentWillMount() {
+		if (this.props.booksList.length === 0) {
+			axios.all([
+				axios.get('http://localhost:8080/data/books.json'),
+				axios.get('http://localhost:8080/data/audio.json'),
+			])
+				.then(axios.spread((books, audio) => {
+					const lib = books.data.concat(audio.data);
+					this.getMainBook(lib, this.props.match.params.id);
+				}));
+		} else {
+			this.getMainBook(this.props.booksList, this.props.match.params.id);
+		}
+	}
 
-	bookItems.splice(bookItems.indexOf(bookItem), 1);
+	// componentDidMount() {
+	// 	console.log(1);
+	// 	if (!this.props.booksList) {
+	// 		const that = this;
+	// 		axios.get('/data/books.json')
+	// 			.then((response) => {
+	// 				console.log(response.data);
+	// 				that.setState({
+	// 					booksList: response.data,
+	// 				});
+	// 			});
+	// 	}
+	// 	this.getMainBook(this.state.booksList, this.props.match.params.id);
+	// }
 
-	function shuffle(a) {
+	componentWillReceiveProps(nextProps) {
+		if (this.props.match.params.id !== nextProps.match.params.id) {
+			this.getMainBook(nextProps.booksList, nextProps.match.params.id);
+		}
+	}
+
+	getMainBook(booksList, id) {
+		const title = id.split('-').map(item => item[0].toUpperCase() + item.slice(1))[0];
+		const bookItem = booksList.filter(item => item.title.indexOf(title) !== -1)[0];
+		this.getExtraBooks(bookItem, booksList);
+		this.setState({
+			mainBook: bookItem,
+		});
+	}
+
+	getExtraBooks(mainBook, booksList) {
+		const bookCategories = mainBook.category.indexOf('|') === -1 ?
+			mainBook.category :
+			mainBook.category.split('|');
+
+		const bookItems = (typeof bookCategories === 'string') ?
+			booksList.filter(item => item.category.indexOf(bookCategories) !== -1) :
+			booksList.filter(item => item.category.indexOf(bookCategories[0]) !== -1);
+
+		bookItems.splice(bookItems.indexOf(mainBook), 1);
+		this.setState({
+			extraBooks: this.shuffle(bookItems),
+		});
+	}
+
+	shuffle(a) {
 		const arr = a;
 		for (let i = arr.length - 1; i > 0; i -= 1) {
 			const j = Math.floor(Math.random() * (i + 1));
@@ -27,17 +84,20 @@ const Book = ({ match }) => {
 		return arr;
 	}
 
-	bookItems = shuffle(bookItems);
+	render() {
+		return (
+			<section>
+				{this.state.extraBooks && this.state.mainBook && <Profile
+				book={this.state.mainBook}
+				extraBooks={this.state.extraBooks}
+				/>}
 
-	return (
-		<section>
-			<Profile book={bookItem} extraBooks={bookItems} />
-		</section>
-	);
-};
+			</section>
+		);
+	}
+}
 
 Book.propTypes = {
 	match: PropTypes.objectOf(PropTypes.any).isRequired,
+	booksList: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
-
-export default Book;

@@ -22,26 +22,23 @@ export default class Category extends React.Component {
 		};
 
 		this.filterByCategory = this.filterByCategory.bind(this);
+		this.sortBooks = this.sortBooks.bind(this);
 	}
 
 	componentWillMount() {
-		const that = this;
-		axios.get('/data/books.json')
-			.then((response) => {
-				that.setState({
-					unitedResponse: response.data,
+		axios.all([
+			axios.get('http://localhost:8080/data/books.json'),
+			axios.get('http://localhost:8080/data/audio.json'),
+		])
+			.then(axios.spread((books, audio) => {
+				const lib = books.data.concat(audio.data);
+				this.setState({
+					unitedResponse: lib,
 				});
-			});
-		axios.get('/data/audio.json')
-			.then((response) => {
-				that.setState({
-					unitedResponse: this.state.unitedResponse.concat(response.data),
-				});
-
 				let { categoryName } = this.props.match.params;
 				categoryName = categoryName[0].toUpperCase() + categoryName.slice(1);
-				this.filterByCategory(categoryName, this.state.unitedResponse);
-			});
+				this.filterByCategory(categoryName, lib);
+			}));
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -69,8 +66,19 @@ export default class Category extends React.Component {
 		const categorized = arrayToFilter.filter(item =>
 			item.category.indexOf(category) !== -1);
 		this.setState({
-			booksList: categorized,
+			booksList: shuffle(categorized),
 			immutableSearch: categorized,
+		});
+	}
+
+	sortBooks() {
+		const sel = document.getElementById('sortingSelect');
+		const { value } = sel.options[sel.selectedIndex];
+		const arrayToSort = this.state.booksList.slice();
+		let sortedArray = arrayToSort.sort((a, b) => (a[value] > b[value] ? 1 : -1));
+		sortedArray = value === 'score' ? sortedArray.reverse() : sortedArray;
+		this.setState({
+			booksList: sortedArray,
 		});
 	}
 
@@ -80,7 +88,7 @@ export default class Category extends React.Component {
 				<Gallery
 					sortBooks={this.sortBooks}
 					showAddButton={false}
-					booksList={shuffle(this.state.booksList)}
+					booksList={this.state.booksList}
 				/>
 			</section>
 		);

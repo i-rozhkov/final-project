@@ -29,6 +29,16 @@ export default class Profile extends React.Component {
 		this.getUrl = this.getUrl.bind(this);
 	}
 
+	componentWillReceiveProps(nextProps) {
+		this.setState({
+			title: nextProps.book.title,
+			author: nextProps.book.author,
+			summary: nextProps.book.summary,
+			score: nextProps.book.score,
+			image: nextProps.book.image,
+		});
+	}
+
 	getUrl(text) {
 		return text.split(' ').map(item => item[0].toLowerCase() + item.slice(1)).join('-');
 	}
@@ -86,7 +96,7 @@ export default class Profile extends React.Component {
 						</p>
 						<p className="book-summary">{this.state.summary}</p>
 						<div className="book-score"><Rating value={(this.state.score) / 2} /></div>
-						<button className="read-button">Read</button>
+						<embed src="file_name.pdf" width="800px" height="2100px" />
 					</div>
 					<div className="share-buttons">
 						<span className="share-span">Share this book!</span>

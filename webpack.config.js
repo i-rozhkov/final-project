@@ -17,6 +17,7 @@ module.exports = {
 			title: 'ForestLib',
 			filename: 'index.html',
 			inject: 'body',
+			favicon: './src/img/favicon.ico',
 		}),
 	],
 
