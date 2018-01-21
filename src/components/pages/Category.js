@@ -55,9 +55,11 @@ export default class Category extends React.Component {
 			const booksToSearch = this.state.immutableSearch.slice();
 			const filteredArray = booksToSearch.filter(item =>
 				item.title.indexOf(nextProps.searchString) !== -1);
-			this.setState({
-				booksList: filteredArray,
-			});
+			if (filteredArray.length) {
+				this.setState({
+					booksList: filteredArray,
+				});
+			}
 		}
 	}
 

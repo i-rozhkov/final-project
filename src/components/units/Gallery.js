@@ -15,7 +15,7 @@ const getMainCategory = (category) => {
 
 const getGalleryTitle = () => {
 	const path = window.location.pathname.split('/').reverse()[0];
-	return path[0].toUpperCase() + path.slice(1);
+	return path.split('-').map(item => item[0].toUpperCase() + item.slice(1)).join(' ');
 };
 
 export default class Gallery extends React.Component {

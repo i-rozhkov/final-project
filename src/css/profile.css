@@ -57,15 +57,42 @@
 	margin: 0 20px;
 }
 
+.book-description > .book-score {
+	width: 200px;
+
+}
+
 .book-summary {
 	width: 550px;
 }
 
 .read-button {
+	position: relative;
+	left: 230px;
+	top: -42px;
+	display: inline-block;
+	margin: 0 15px 15px 0;
 	height: 50px;
 	width: 150px;
-	position: absolute;
-	right: 0;
+	color: #000;
+	cursor: pointer;
+	outline-color: #aaa;
+	border-radius: 3px;
+	letter-spacing: .5px;
+	font-size: 20px;
+	text-decoration: none;
+	background-color: rgb(219, 84, 66);
+	background-color: rgba(219, 84, 66, 0.8);
+	text-align: center;
+	line-height: 50px;
+	transition: background-color .25s ease,
+				color .2s ease;
+}
+
+.read-button:hover {
+	background-color: rgb(70, 52, 78);
+	background-color: rgba(70, 52, 78, 0.8);
+	color: #F4EEF8;
 }
 
 .share-buttons {

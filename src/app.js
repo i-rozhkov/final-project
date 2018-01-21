@@ -97,6 +97,7 @@ class App extends React.Component {
 
 	filterBySearch(event) {
 		const stringToFilter = event.target.value;
+
 		let immutable;
 		if (window.location.pathname.indexOf('books') !== -1) {
 			immutable = this.state.immutableSearchBooks.slice();
@@ -111,10 +112,12 @@ class App extends React.Component {
 		} else {
 			const filteredArray = immutable.filter(item =>
 				item.title.indexOf(stringToFilter) !== -1);
-			this.setState({
-				booksList: filteredArray,
-				audioList: filteredArray,
-			});
+			if (filteredArray.length) {
+				this.setState({
+					booksList: filteredArray,
+					audioList: filteredArray,
+				});
+			}
 		}
 	}
 

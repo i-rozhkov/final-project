@@ -96,7 +96,8 @@ export default class Profile extends React.Component {
 						</p>
 						<p className="book-summary">{this.state.summary}</p>
 						<div className="book-score"><Rating value={(this.state.score) / 2} /></div>
-						<embed src="file_name.pdf" width="800px" height="2100px" />
+						<a href="../../data/book.pdf" target="_blank" className="read-button">Read the Book</a>
+						<a href="../../data/audio.mp3" target="_blank" className="read-button">Listen Online</a>
 					</div>
 					<div className="share-buttons">
 						<span className="share-span">Share this book!</span>
