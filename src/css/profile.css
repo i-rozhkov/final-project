@@ -269,6 +269,7 @@
 	}
 
 	.read-button {
+		left: 290px;
 		margin-right: 5px;
 	}
 }
