@@ -15,7 +15,7 @@
 
 .slide {
 	display: inline-block;
-	height: 300px;
+	height: 400px;
 	width: 100%;
 }
   
@@ -38,7 +38,7 @@
   
 .slider-right-arrow {
 	position: absolute;
-	top: 125px;
+	top: 175px;
 	right: 45px;
 	z-index: 999;
 	color: #fff;
@@ -50,7 +50,7 @@
 
 .slider-left-arrow {
 	position: absolute;
-	top: 125px;
+	top: 175px;
 	left: 45px;
 	z-index: 999;
 	color: #fff;
@@ -62,11 +62,11 @@
 
 .dots-container {
 	position: absolute;
-	bottom: 0;
+	bottom: 5px;
 	width: 100%;
 	text-align: center;
 	z-index: 9999;
-	padding: 5px 0 10px;
+	padding: 5px 0 5px;
 }
 
 .dot {

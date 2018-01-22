@@ -161,7 +161,9 @@ class App extends React.Component {
 	}
 }
 
-ReactDOM.render(
-	<App />,
-	document.getElementById('main'),
-);
+window.addEventListener('load', () => {
+	ReactDOM.render(
+		<App />,
+		document.getElementById('main'),
+	);
+});
