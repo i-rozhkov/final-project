@@ -92,3 +92,20 @@
 	color: rgba(250, 237, 38, .9);
 	text-align: center;
 }
+
+@media screen and (min-width: 768px) and (max-width: 1200px) {
+	.us .image, 
+	.ua .image, 
+	.ru .image {
+		transform: scale(.7);
+	}
+
+	.address-table {
+		font-size: 14px;
+	}
+
+	.thead, 
+	.row {
+		width: 700px;
+	}
+}

@@ -266,3 +266,34 @@ footer article .site-name {
 	justify-content: space-around;
 	padding-left: 30px;
 }
+
+@media screen and (min-width: 768px) and (max-width: 1200px) {
+	header .logo {
+		left: 0;
+	}
+
+	.logo img {
+		transform: scale(-.9, .9);
+	}
+
+ 	.logo-name {
+		font-size: 18px;
+		top: 45px;
+	}
+
+	.signup-form p {
+		font-size: 16px;
+	}
+
+	.searchField {
+		width: 25%;
+		font-size: 14px;
+		background-size: 30px 30px;
+		background-position: 97% 3px;
+		padding: 10px 5px;
+	}
+
+	footer article {
+		display: none;
+	}
+}

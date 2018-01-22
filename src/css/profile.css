@@ -1,6 +1,6 @@
 .profile {
 	display: flex;
-	justify-content: space-around;
+	justify-content: center;
 	width: 90%;
 	margin: 20px auto;
 }
@@ -11,7 +11,7 @@
 	justify-content: space-between;
 	flex-wrap: wrap;
 	align-items: flex-start;
-	margin: 0 auto;
+	margin: 0;
 	font-family: 'Bubblegum Sans', cursive;
 	background-color: rgb(157, 141, 143);
 	background-color: rgba(157, 141, 143, 0.8);
@@ -191,7 +191,7 @@
 	font-family: 'Fredericka the Great', cursive;
 	font-size: 16px;
 	height: 20px;
-	width: 180px;
+	width: 140px;
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	overflow: hidden;
@@ -220,4 +220,55 @@
 .extra-author a:hover {
 	color: rgb(219, 84, 66);
 	color: rgba(219, 84, 66, .9);
+}
+
+@media screen and (min-width: 768px) and (max-width: 1200px) {
+	.book-cover {
+		margin: 0 auto;
+	}
+
+	.book-description {
+		width: 50%;
+	}
+
+	.book-summary {
+		width: 180%;
+	}
+
+	.read-button {
+		margin-right: auto;
+	}
+
+}
+
+@media screen and (min-width: 768px) and (max-width: 900px) {
+	.book-profile {
+		width: 450px;
+	}
+
+	.extra-books {
+		width: 250px;
+	}
+}
+
+@media screen and (min-width: 900px) and (max-width: 1200px) {
+	.book-profile {
+		width: 650px;
+	}
+
+	.extra-books {
+		width: 350px;
+	}
+	
+	.book-description {
+		width: 50%;
+	}
+
+	.book-summary {
+		width: 180%;
+	}
+
+	.read-button {
+		margin-right: 5px;
+	}
 }

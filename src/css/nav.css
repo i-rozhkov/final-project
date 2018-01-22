@@ -109,3 +109,15 @@
 .submenu-item:hover + .submenu-item {
 	border-top-color: rgba(250, 237, 38, .9);
 }
+
+@media screen and (min-width: 768px) and (max-width: 1200px) {
+	.menu-item a {
+		font-size: 10px;
+		padding: 25px 10px;
+	}
+
+	.submenu-item a {
+		font-size: 10px;
+		padding: 8px 2px;
+	}
+}

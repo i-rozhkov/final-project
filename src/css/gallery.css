@@ -40,9 +40,10 @@
 
 .sorting-container select {
 	margin-left: 10px;
+	margin-right: 15px;
 	padding-top: 4px;
 	font-size: 18px;
-	width: 120px;
+	width: 60%;
 	border: none;
 	color: #F4EEF8;
 	font-family: 'Bubblegum Sans', cursive;
@@ -193,4 +194,10 @@
 	background-color: rgb(70, 52, 78);
 	background-color: rgba(70, 52, 78, 0.8);
 	color: #F4EEF8;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1200px) {
+	.images {
+		height: 576px;
+	}
 }
