@@ -16,38 +16,22 @@ export default class Book extends React.Component {
 	}
 
 	componentWillMount() {
-		if (this.props.booksList.length === 0) {
-			axios.all([
-				axios.get('http://localhost:8080/data/books.json'),
-				axios.get('http://localhost:8080/data/audio.json'),
-			])
-				.then(axios.spread((books, audio) => {
-					const lib = books.data.concat(audio.data);
-					this.getMainBook(lib, this.props.match.params.id);
-				}));
-		} else {
-			this.getMainBook(this.props.booksList, this.props.match.params.id);
-		}
+		axios.all([
+			axios.get('/books'),
+			axios.get('/audio'),
+		])
+			.then(axios.spread((books, audio) => {
+				const lib = books.data.concat(audio.data);
+				this.setState({
+					booksList: lib,
+				});
+				this.getMainBook(lib, this.props.match.params.id);
+			}));
 	}
-
-	// componentDidMount() {
-	// 	console.log(1);
-	// 	if (!this.props.booksList) {
-	// 		const that = this;
-	// 		axios.get('/data/books.json')
-	// 			.then((response) => {
-	// 				console.log(response.data);
-	// 				that.setState({
-	// 					booksList: response.data,
-	// 				});
-	// 			});
-	// 	}
-	// 	this.getMainBook(this.state.booksList, this.props.match.params.id);
-	// }
 
 	componentWillReceiveProps(nextProps) {
 		if (this.props.match.params.id !== nextProps.match.params.id) {
-			this.getMainBook(nextProps.booksList, nextProps.match.params.id);
+			this.getMainBook(this.state.booksList, nextProps.match.params.id);
 		}
 	}
 
@@ -70,6 +54,7 @@ export default class Book extends React.Component {
 			booksList.filter(item => item.category.indexOf(bookCategories[0]) !== -1);
 
 		bookItems.splice(bookItems.indexOf(mainBook), 1);
+
 		this.setState({
 			extraBooks: this.shuffle(bookItems),
 		});

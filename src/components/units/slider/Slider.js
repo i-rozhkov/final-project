@@ -31,7 +31,7 @@ export default class Slider extends React.Component {
 	}
 
 	componentDidMount() {
-		axios.get('/data/slider.config.json')
+		axios.get('/slider')
 			.then((res) => {
 				this.setState({ images: res.data });
 			});

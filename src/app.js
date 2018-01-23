@@ -42,8 +42,8 @@ class App extends React.Component {
 		const ids = ['new', 'popular', 'bestsellers'];
 		const id = window.location.pathname.split('/').reverse()[0];
 		axios.all([
-			axios.get('http://localhost:8080/data/books.json'),
-			axios.get('http://localhost:8080/data/audio.json'),
+			axios.get('/books'),
+			axios.get('/audio'),
 		]).then(axios.spread((books, audio) => {
 			this.setState({
 				booksList: books.data,

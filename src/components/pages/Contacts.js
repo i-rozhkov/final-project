@@ -5,10 +5,10 @@ import Address from '../units/Address';
 export default class Contacts extends React.Component {
 	render() {
 		return (
-			<div>
+			<section>
 				<Address />
 				<Map />
-			</div>
+			</section>
 		);
 	}
 }

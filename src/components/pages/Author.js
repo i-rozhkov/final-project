@@ -14,13 +14,13 @@ export default class Author extends React.Component {
 
 	componentWillMount() {
 		const that = this;
-		axios.get('/data/books.json')
+		axios.get('/books')
 			.then((response) => {
 				that.setState({
 					booksList: response.data,
 				});
 			});
-		axios.get('/data/audio.json')
+		axios.get('/audio')
 			.then((response) => {
 				that.setState({
 					booksList: this.state.booksList.concat(response.data),

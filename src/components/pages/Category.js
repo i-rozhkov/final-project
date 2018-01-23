@@ -27,8 +27,8 @@ export default class Category extends React.Component {
 
 	componentWillMount() {
 		axios.all([
-			axios.get('http://localhost:8080/data/books.json'),
-			axios.get('http://localhost:8080/data/audio.json'),
+			axios.get('/books'),
+			axios.get('/audio'),
 		])
 			.then(axios.spread((books, audio) => {
 				const lib = books.data.concat(audio.data);
